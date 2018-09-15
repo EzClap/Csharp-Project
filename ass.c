@@ -11,11 +11,17 @@ bool game_over = false;    /* Set this to true when game is over */
 bool update_screen = true; /* Set to false to prevent screen update. */
 bool stop_treasure = false;
 
-char *me_image =
-    /**/ "ooOooo"
-    /**/ "oooooo"
-    /**/ "oooooo"
-    /**/ "oooooo";
+// char *me_image =
+//     /**/ "ooOooo"
+//     /**/ "oooooo"
+//     /**/ "oooooo"
+//     /**/ "oooooo";
+
+char *me_image = 
+    /**/ "  o   "
+    /**/ "<-|-<-"
+    /**/ "  |   "
+    /**/ "__|__ "
 
 char *safe_platform_image =
     /**/ "=========="
@@ -211,18 +217,12 @@ void move_me(sprite_id sid, int key, int window_width)
 {
 
     int mx = sprite_x(sid);
-    // int my = round(sprite_y(me));
-    // me_slide = sprite_dx(sid);
+    int my = round(sprite_y(me));
     if (key == 'a' && mx > 0){
-        // me_slide = -(screen_width()/ 66000.0);
-        // me_fall_dy = 0;
-        // sprite_step(sid);
-        sprite_move(sid,-1,0);
+        me -> dx = 0.025;
     }
     if (key == 'd' && mx < window_width - sprite_width(sid)){
-        // mdx = screen_width()/ 66000.0;
-        sprite_move(sid, 1, 0);
-    
+        me -> dx = -0.025;    
 }
 }
 
