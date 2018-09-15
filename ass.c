@@ -11,11 +11,17 @@ bool game_over = false;    /* Set this to true when game is over */
 bool update_screen = true; /* Set to false to prevent screen update. */
 bool stop_treasure = false;
 
-char *me_image =
-    /**/ "ooOooo"
-    /**/ "oooooo"
-    /**/ "oooooo"
-    /**/ "oooooo";
+// char *me_image =
+//     /**/ "ooOooo"
+//     /**/ "oooooo"
+//     /**/ "oooooo"
+//     /**/ "oooooo";
+
+char *me_image = 
+    /**/ "  o   "
+    /**/ "<-|-<-"
+    /**/ "  |   "
+    /**/ "__|__ "
 
 char *safe_platform_image =
     /**/ "=========="
