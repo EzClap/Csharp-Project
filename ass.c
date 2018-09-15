@@ -410,7 +410,8 @@ void process()
     }
     if (!on_platform(me, random_platforms, column_num + ctr1 + ctr2 + 1))
     {   
-        me_fall_dy = screen_height() / 42000.0;
+        //me_fall_dy = screen_height() / 42000.0;
+        me_fall_dy = screen_height()/ 40000.0;
         sprite_step(me);
     }
     me_death();
