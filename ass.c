@@ -259,14 +259,14 @@ void moving_treasure(sprite_id sid)
 bool me_physics(sprite_id sid, sprite_id sid2)
 {
     int top_me = sid->y;
-    int btm_me = top_me + sid->height;
+    int btm_me = top_me + sid->height - 1;
     int left_me = sid->x;
     int rght_me = left_me + sid->width - 1;
     // double mdx = sid -> dx;
     // double mdy = sid -> dy;
 
     int top_block = sid2->y;
-    int btm_block = top_block + sprite_height(sid2) - 2;
+    int btm_block = top_block + sprite_height(sid2) - 1;
     int left_block = sid2->x;
     int rght_block = left_block + sprite_width(sid2) - 1;
 
