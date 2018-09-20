@@ -115,7 +115,7 @@ namespace Object_Classes {
 
                 for (int k = 0; k < blackHoles.Length; k++)
                 {
-                    if (i == blackHoles[k, 0]) { squares[i] = new BlackholeSquare("square " + i, i, blackHoles[k, 1], blackHoles[k, 2]); taken = true}
+                    if (i == blackHoles[k, 0]) { squares[i] = new BlackholeSquare("square " + i, i, blackHoles[k, 1], blackHoles[k, 2]); taken = true; }
                 }
 
                 if (!taken) { squares[i] = new Square("square " + i, i); }

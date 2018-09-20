@@ -136,10 +136,18 @@ namespace Object_Classes {
         /// <param name="d1">first die</param>
         /// <param name="d2">second die</param>
         public void Play(Die d1, Die d2) {
-
             //  CODE NEEDS TO BE ADDED HERE
-
-
+            int forwardNum = d1.Roll() + d2.Roll();
+            position += forwardNum;
+            for (int i = 0; i < Board.Squares.Length; i++)
+            {
+                if (location == Board.Squares[i])
+                {
+                    location = Board.Squares[i].NextSquare();
+                    position = location.Number;
+                    //fuelLeft =
+                }
+            }
         } // end Play.
 
 
@@ -168,12 +176,15 @@ namespace Object_Classes {
         private bool ReachedFinalSquare() {
 
             //  CODE NEEDS TO BE ADDED HERE
+            if (position == Board.FINISH_SQUARE_NUMBER)
+            {
+                atFinish = true;
+                return true;
+            }
 
             return false; // so the class can compile without error
         } //end ReachedFinalSquare
 
 
-
     } //end class Player
-
 }

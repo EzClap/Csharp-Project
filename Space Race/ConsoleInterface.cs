@@ -30,8 +30,12 @@ namespace Space_Race
              Determine if anyone has won
              Output each player's details at end of the game
            */
-           
-                
+            Board.SetUpBoard();
+
+            for (int i = 0; i < Board.Squares.Length; i++)
+            {
+                Console.WriteLine(Board.Squares[i].Name);
+            }
             PressEnter();
 
         }//end Main
