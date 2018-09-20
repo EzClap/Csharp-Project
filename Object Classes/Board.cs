@@ -140,6 +140,25 @@ namespace Object_Classes {
             const int start = 0, exit = 1, fuel = 2;
             destNum = 0; amount = 0;
 
+            /*public static int[,] holes =
+            {
+                { 2, 3, 5, 12, 16, 29, 40, 45}, //wormHoles
+                { 10, 26, 30, 35, 36, 49, 52, 53} //blackHoles
+                
+            };*/
+            //make int[,] holes a 2d array where the first hole is {{wormHoles},{blackHoles}}
+            bool taken = false;
+            for (int i = 0; i < wormHoles.Length; i++)
+            {
+                if (squareNum == wormHoles[i,0]) { destNum = wormHoles[i, 1]; amount = wormHoles[i, 2]; taken = true; }
+            }
+
+            for (int i = 0; i < blackHoles.Length; i++)
+            {
+                if (squareNum == blackHoles[i,0]) { destNum = blackHoles[i, 1]; amount = blackHoles[i, 2]; taken = true; }
+            }
+
+            if (!taken) { destNum = squareNum; amount = fuel; }
         } //end FindDestSquare
 
     } //end class Board
