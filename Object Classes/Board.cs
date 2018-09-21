@@ -175,7 +175,7 @@ namespace Object_Classes {
             bool taken = false;
             for (int i = 0; i < wormHoles.GetLength(0); i++)
             {
-                if (squareNum == wormHoles[i, 0]) { destNum = wormHoles[i, 1]; amount = wormHoles[i, 2]; taken = true }
+                if (squareNum == wormHoles[i, 0]) { destNum = wormHoles[i, 1]; amount = wormHoles[i, 2]; taken = true; }
                 if (squareNum == blackHoles[i, 0]) { destNum = blackHoles[i, 1]; amount = blackHoles[i, 2]; taken = true; }
 
             }
