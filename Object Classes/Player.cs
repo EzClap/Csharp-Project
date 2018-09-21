@@ -145,7 +145,7 @@ namespace Object_Classes {
                 {
                     location = Board.Squares[i].NextSquare();
                     position = location.Number;
-                    //fuelLeft =
+                    //fuelLeft = 
                 }
             }
         } // end Play.

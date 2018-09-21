@@ -7,3 +7,11 @@ C:\Sandpit\Student Project\Space Race\Game Logic Class\obj\Debug\Game Logic Clas
 C:\Sandpit\Student Project\Space Race\Game Logic Class\bin\Debug\Object Classes.dll
 C:\Sandpit\Student Project\Space Race\Game Logic Class\bin\Debug\Object Classes.pdb
 C:\Sandpit\Student Project\Space Race\Game Logic Class\obj\Debug\Game Logic Class.csproj.CopyComplete
+C:\Users\under\Git repo\cantbegoogled\Game Logic Class\bin\Debug\Game Logic Class.dll
+C:\Users\under\Git repo\cantbegoogled\Game Logic Class\bin\Debug\Game Logic Class.pdb
+C:\Users\under\Git repo\cantbegoogled\Game Logic Class\bin\Debug\Object Classes.dll
+C:\Users\under\Git repo\cantbegoogled\Game Logic Class\bin\Debug\Object Classes.pdb
+C:\Users\under\Git repo\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.csproj.CoreCompileInputs.cache
+C:\Users\under\Git repo\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.csproj.CopyComplete
+C:\Users\under\Git repo\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.dll
+C:\Users\under\Git repo\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.pdb

@@ -25,12 +25,12 @@ D:\Users\rymanj\Desktop\Mah 5\Uni 18sem2\CAB201\Major Assignment\Space Race(1)\S
 C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Space Race.exe.config
 C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Space Race.exe
 C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Space Race.pdb
-C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Game Logic Class.dll
 C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Object Classes.dll
-C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Game Logic Class.pdb
 C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Object Classes.pdb
-C:\Users\under\Git repo\cantbegoogled\Space Race\obj\Debug\Console Class.csprojAssemblyReference.cache
 C:\Users\under\Git repo\cantbegoogled\Space Race\obj\Debug\Console Class.csproj.CoreCompileInputs.cache
 C:\Users\under\Git repo\cantbegoogled\Space Race\obj\Debug\Console Class.csproj.CopyComplete
 C:\Users\under\Git repo\cantbegoogled\Space Race\obj\Debug\Space Race.exe
 C:\Users\under\Git repo\cantbegoogled\Space Race\obj\Debug\Space Race.pdb
+C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Game Logic Class.dll
+C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Game Logic Class.pdb
+C:\Users\under\Git repo\cantbegoogled\Space Race\obj\Debug\Console Class.csprojAssemblyReference.cache

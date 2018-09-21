@@ -23,3 +23,18 @@ C:\Sandpit\Student Project\Space Race\GUI Class\bin\Debug\Object Classes.dll
 C:\Sandpit\Student Project\Space Race\GUI Class\bin\Debug\Game Logic Class.pdb
 C:\Sandpit\Student Project\Space Race\GUI Class\bin\Debug\Object Classes.pdb
 C:\Sandpit\Student Project\Space Race\GUI Class\obj\Debug\GUI Class.csproj.CopyComplete
+C:\Users\under\Git repo\cantbegoogled\GUI Class\bin\Debug\GUI Class.exe.config
+C:\Users\under\Git repo\cantbegoogled\GUI Class\bin\Debug\GUI Class.exe
+C:\Users\under\Git repo\cantbegoogled\GUI Class\bin\Debug\GUI Class.pdb
+C:\Users\under\Git repo\cantbegoogled\GUI Class\bin\Debug\Game Logic Class.dll
+C:\Users\under\Git repo\cantbegoogled\GUI Class\bin\Debug\Object Classes.dll
+C:\Users\under\Git repo\cantbegoogled\GUI Class\bin\Debug\Game Logic Class.pdb
+C:\Users\under\Git repo\cantbegoogled\GUI Class\bin\Debug\Object Classes.pdb
+C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.csprojAssemblyReference.cache
+C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI_Class.SpaceRaceForm.resources
+C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI_Class.Properties.Resources.resources
+C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.csproj.GenerateResource.cache
+C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.csproj.CoreCompileInputs.cache
+C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.csproj.CopyComplete
+C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.exe
+C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.pdb

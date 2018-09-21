@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console Class", "Space Race\Console Class.csproj", "{89ADA912-74D3-4DE3-9DD6-C81E6D8180D0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C204D97-DD77-4533-9104-5B1634D28886} = {9C204D97-DD77-4533-9104-5B1634D28886}
+		{B5E5EDC3-89E2-45EC-B940-5960886428DB} = {B5E5EDC3-89E2-45EC-B940-5960886428DB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI Class", "GUI Class\GUI Class.csproj", "{509411FE-BD7F-4B27-B242-AA541A98D0C4}"
 EndProject

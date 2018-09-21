@@ -4,6 +4,7 @@ using Game_Logic_Class;
 using Object_Classes;
 
 
+
 namespace Space_Race
 {
     class Console_Class
@@ -26,7 +27,7 @@ namespace Space_Race
              loop  until game is finished           
                 call PlayGame in Game Logic class to play one round
                 Output each player's details at end of round
-             end loop
+             end loopC:\Users\under\Git repo\cantbegoogled\Space Race\ConsoleInterface.cs
              Determine if anyone has won
              Output each player's details at end of the game
            */
