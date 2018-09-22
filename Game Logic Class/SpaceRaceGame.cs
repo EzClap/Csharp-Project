@@ -20,7 +20,19 @@ namespace Game_Logic_Class
             }
             set
             {
-                numberOfPlayers = value;
+                //Changed to limit the number of players
+                if (numberOfPlayers < 2)
+                {
+                    numberOfPlayers = 2;
+                }
+                else if (numberOfPlayers > 6)
+                {
+                    numberOfPlayers = 6;
+                }
+                else
+                {
+                    numberOfPlayers = value;
+                }
             }
         }
 
@@ -62,6 +74,11 @@ namespace Game_Logic_Class
             //      create a new player object
             //      initialize player's instance variables for start of a game
             //      add player to the binding list
+            for (int i = 0; i < numberOfPlayers; i++)
+            {
+                players.AddNew();
+                players[i].Name = names[i];
+            }
                 
         }
 

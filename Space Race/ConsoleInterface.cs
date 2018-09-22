@@ -32,11 +32,11 @@ namespace Space_Race
              Output each player's details at end of the game
            */
             Board.SetUpBoard();
-
-            for (int i = 0; i < Board.Squares.Length; i++)
-            {
-                Console.WriteLine(Board.Squares[i].Name);
-            }
+            //this is for testing purposes only
+            //for (int i = 0; i < Board.Squares.Length; i++)
+            //{
+            //    Console.WriteLine(Board.Squares[i].Name);
+            //}
             PressEnter();
 
         }//end Main
