@@ -31,8 +31,12 @@ namespace Space_Race
              Determine if anyone has won
              Output each player's details at end of the game
            */
-            DeterminePlayers();
-
+            bool playAgain = true;
+            do
+            {
+                DeterminePlayers();
+                SpaceRaceGame.PlayOneRound();
+            } while (playAgain);
             PressEnter();
         }//end Main
 
