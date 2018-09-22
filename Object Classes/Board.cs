@@ -99,40 +99,18 @@ namespace Object_Classes {
             squares[START_SQUARE_NUMBER] = new Square("Start", START_SQUARE_NUMBER);
 
             // Create the main part of the board, squares 1 .. 54
-            //  CODE NEEDS TO BE ADDED HERE
-            //
-            //   Need to call the appropriate constructor for each square
-            //       either new Square(...),  new WormholeSquare(...) or new BlackholeSquare(...)
-            //
-            
             for (int i = 1; i < FINISH_SQUARE_NUMBER; i++)
             {
-                //bool taken = false;
-                //for (int j = 0; j < wormHoles.GetLength(0); j++)
-                //{
-                //    if (i == wormHoles[j, 0]) { squares[i] = new WormholeSquare("square " + i, i, wormHoles[j, 1], wormHoles[j, 2]); taken = true; }
-                //}
-
-                //for (int k = 0; k < wormHoles.GetLength(0); k++)
-                //{
-                //    if (i == blackHoles[k, 0]) { squares[i] = new BlackholeSquare("square " + i, i, blackHoles[k, 1], blackHoles[k, 2]); taken = true; }
-                //}
-
-                //if (taken) { squares[i] = new Square("square " + i, i); }
                 bool assigned = false;
                 for (int j = 0; j < wormHoles.GetLength(0); j++)
                 {
                     if (i == wormHoles[j, 0]) { squares[i] = new WormholeSquare("square " + i, i, wormHoles[j, 1], wormHoles[j, 2]); assigned = true; }
-
                     else if (i == blackHoles[j, 0]) { squares[i] = new BlackholeSquare("square " + i, i, blackHoles[j, 1], blackHoles[j, 2]); assigned = true; }
                 }
-                if (assigned == false)
+                if (!assigned)
                 {
                     squares[i] = new Square("square " + i, i);
                 }
-
-
-
             }
 
             // Create the 'finish' square.
@@ -154,33 +132,14 @@ namespace Object_Classes {
             const int start = 0, exit = 1, fuel = 2;
             destNum = 0; amount = 0;
 
-            /*public static int[,] holes =
-            {
-                { 2, 3, 5, 12, 16, 29, 40, 45}, //wormHoles
-                { 10, 26, 30, 35, 36, 49, 52, 53} //blackHoles
-                
-            };*/
-            //make int[,] holes a 2d array where the first hole is {{wormHoles},{blackHoles}}
-            //bool taken = false;
-            //for (int i = 0; i < wormHoles.Length; i++)
-            //{
-            //    if (squareNum == wormHoles[i,0]) { destNum = wormHoles[i, 1]; amount = wormHoles[i, 2]; taken = true; }
-            //}
-
-            //for (int i = 0; i < blackHoles.Length; i++)
-            //{
-            //    if (squareNum == blackHoles[i,0]) { destNum = blackHoles[i, 1]; amount = blackHoles[i, 2]; taken = true; }
-            //}
-            //if (!taken) { destNum = squareNum; amount = fuel; }
-            bool taken = false;
+            bool assigned = false;
             for (int i = 0; i < wormHoles.GetLength(0); i++)
             {
-                if (squareNum == wormHoles[i, 0]) { destNum = wormHoles[i, 1]; amount = wormHoles[i, 2]; taken = true; }
-                if (squareNum == blackHoles[i, 0]) { destNum = blackHoles[i, 1]; amount = blackHoles[i, 2]; taken = true; }
-
+                if (squareNum == wormHoles[i, 0]) { destNum = wormHoles[i, 1]; amount = wormHoles[i, 2]; assigned = true; }
+                if (squareNum == blackHoles[i, 0]) { destNum = blackHoles[i, 1]; amount = blackHoles[i, 2]; assigned = true; }
             }
-            if (taken) { destNum = squareNum; amount = fuel; }
 
+            if (!assigned) { destNum = squareNum; amount = fuel; }
         } //end FindDestSquare
 
     } //end class Board
