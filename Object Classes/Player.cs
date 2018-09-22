@@ -143,9 +143,11 @@ namespace Object_Classes {
             {
                 if (location == Board.Squares[i])
                 {
+                    //maybe we dont need location and position update
                     location = Board.Squares[i].NextSquare();
                     position = location.Number;
-                    //fuelLeft = 
+                    //location.Landon updates the above
+                    location.LandOn(this); 
                 }
             }
         } // end Play.
