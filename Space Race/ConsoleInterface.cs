@@ -32,11 +32,18 @@ namespace Space_Race
              Output each player's details at end of the game
            */
             bool playAgain = true;
-            do
+            bool gameFinished = false;
+            while (playAgain)
             {
                 DeterminePlayers();
-                SpaceRaceGame.PlayOneRound();
-            } while (playAgain);
+                while (!gameFinished)
+                {
+                    //SpaceRaceGame.PlayOneRound();
+                    Console.WriteLine("\tYeah woo spacey things! Yeah look at me go!");
+                    Console.WriteLine("\tNext Rounds...");
+                    if ("y" == Console.ReadLine()) { gameFinished = true; }
+                }
+            }
             PressEnter();
         }//end Main
 
@@ -68,8 +75,8 @@ namespace Space_Race
             int playerInput = -1;
             while (!correctInput)
             {
-                Console.WriteLine("This game is for 2 to 6 players.");
-                Console.Write("How many players: ");
+                Console.WriteLine("\tThis game is for 2 to 6 players.");
+                Console.Write("\tHow many players: ");
                 try
                 {
                     playerInput = int.Parse(Console.ReadLine());
