@@ -9,3 +9,4 @@ C:\Users\under\Git repo\cantbegoogled\Object Classes\obj\Debug\Object Classes.dl
 C:\Users\under\Git repo\cantbegoogled\Object Classes\obj\Debug\Object Classes.pdb
 C:\Users\under\Git repo\cantbegoogled\Object Classes\bin\Debug\Object Classes.dll
 C:\Users\under\Git repo\cantbegoogled\Object Classes\bin\Debug\Object Classes.pdb
+C:\Users\under\Git repo\cantbegoogled\Object Classes\obj\Debug\Object Classes.csprojAssemblyReference.cache

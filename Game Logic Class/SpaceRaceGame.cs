@@ -20,14 +20,14 @@ namespace Game_Logic_Class
             }
             set
             {
-                //Changed to limit the number of players
-                if (numberOfPlayers < 2)
+                //Changed to limit the number of players(modified)
+                if (value < MIN_PLAYERS)
                 {
-                    numberOfPlayers = 2;
+                    numberOfPlayers = MIN_PLAYERS;
                 }
-                else if (numberOfPlayers > 6)
+                else if (value > MAX_PLAYERS)
                 {
-                    numberOfPlayers = 6;
+                    numberOfPlayers = MAX_PLAYERS;
                 }
                 else
                 {
@@ -76,18 +76,24 @@ namespace Game_Logic_Class
             //      add player to the binding list
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                players.AddNew();
-                players[i].Name = names[i];
+                players.Add(new Player(names[i]));
+                players[i].RocketFuel = Player.INITIAL_FUEL_AMOUNT;
+                players[i].Position = Board.StartSquare.Number;
+                players[i].HasPower = true;
+                players[i].Location = Board.StartSquare;
             }
                 
         }
 
-            /// <summary>
-            ///  Plays one round of a game
-            /// </summary>
+        /// <summary>
+        ///  Plays one round of a game
+        /// </summary>
             public static void PlayOneRound() 
         {
-
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].Play(die1, die2);
+            }
         }
 
     }//end SnakesAndLadders

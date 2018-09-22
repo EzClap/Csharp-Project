@@ -26,9 +26,16 @@ namespace Object_Classes {
             get {
                 return position;
             }
-
+            //set the limit so that position wont get out of bound(modified)
             set {
-                position = value;
+                if (value > Board.FINISH_SQUARE_NUMBER)
+                {
+                    position = Board.FINISH_SQUARE_NUMBER;
+                }
+                else
+                {
+                    position = value;
+                }
             }
         }
 
@@ -137,18 +144,21 @@ namespace Object_Classes {
         /// <param name="d2">second die</param>
         public void Play(Die d1, Die d2) {
             //  CODE NEEDS TO BE ADDED HERE
-            int forwardNum = d1.Roll() + d2.Roll();
-            position += forwardNum;
-            for (int i = 0; i < Board.Squares.Length; i++)
+            if (this.hasPower && !ReachedFinalSquare())
             {
-                if (location == Board.Squares[i])
+                d1.Reset();
+                d2.Reset();
+                int forwardNum = d1.Roll() + d2.Roll();
+                Position += forwardNum;
+                location = Board.Squares[position];
+
+                //this updates the location and position and fuel
+                location.LandOn(this);
+                if (Board.Squares[position].NextSquare() == null)
                 {
-                    //maybe we dont need location and position update
-                    location = Board.Squares[i].NextSquare();
-                    position = location.Number;
-                    //location.Landon updates the above
-                    location.LandOn(this); 
+                    location = Board.Squares[position];
                 }
+                
             }
         } // end Play.
 
