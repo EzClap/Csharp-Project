@@ -79,7 +79,7 @@ namespace Space_Race
                 catch (FormatException) { Console.WriteLine("Error: you must enter a valid number."); }
             }
 
-            //SpaceRaceGame.SetUpPlayers();
+            //SpaceRaceGame.SetUpPlayers();.
             for (int i = 0; i < playerInput; i++) { Console.WriteLine(SpaceRaceGame.names[i]); }//SpaceRaceGame.Add(new Player(SpaceRaceGame.names[i]); }
         }
 
