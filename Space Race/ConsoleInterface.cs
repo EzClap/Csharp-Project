@@ -31,6 +31,7 @@ namespace Space_Race
              Determine if anyone has won
              Output each player's details at end of the game
            */
+<<<<<<< HEAD
 
             Board.SetUpBoard();
 
@@ -70,6 +71,21 @@ namespace Space_Race
 
 
             DeterminePlayers();
+=======
+            bool playAgain = true;
+            bool gameFinished = false;
+            while (playAgain)
+            {
+                DeterminePlayers();
+                while (!gameFinished)
+                {
+                    //SpaceRaceGame.PlayOneRound();
+                    Console.WriteLine("\tYeah woo spacey things! Yeah look at me go!");
+                    Console.WriteLine("\tNext Rounds...");
+                    if ("y" == Console.ReadLine()) { gameFinished = true; }
+                }
+            }
+>>>>>>> 40c696af42cf71bafe54d706780cac96353a1753
             PressEnter();
         }//end Main
 
@@ -101,8 +117,8 @@ namespace Space_Race
             int playerInput = -1;
             while (!correctInput)
             {
-                Console.WriteLine("This game is for 2 to 6 players.");
-                Console.Write("How many players: ");
+                Console.WriteLine("\tThis game is for 2 to 6 players.");
+                Console.Write("\tHow many players: ");
                 try
                 {
                     playerInput = int.Parse(Console.ReadLine());
@@ -112,7 +128,7 @@ namespace Space_Race
                 catch (FormatException) { Console.WriteLine("Error: you must enter a valid number."); }
             }
 
-            //SpaceRaceGame.SetUpPlayers();
+            //SpaceRaceGame.SetUpPlayers();.
             for (int i = 0; i < playerInput; i++) { Console.WriteLine(SpaceRaceGame.names[i]); }//SpaceRaceGame.Add(new Player(SpaceRaceGame.names[i]); }
         }
 

@@ -20,6 +20,7 @@ namespace Game_Logic_Class
             }
             set
             {
+<<<<<<< HEAD
                 //Changed to limit the number of players(modified)
                 if (value < MIN_PLAYERS)
                 {
@@ -33,6 +34,9 @@ namespace Game_Logic_Class
                 {
                     numberOfPlayers = value;
                 }
+=======
+                numberOfPlayers = value;
+>>>>>>> 40c696af42cf71bafe54d706780cac96353a1753
             }
         }
 
@@ -81,8 +85,7 @@ namespace Game_Logic_Class
                 players[i].Position = Board.StartSquare.Number;
                 players[i].HasPower = true;
                 players[i].Location = Board.StartSquare;
-            }
-                
+            }   
         }
 
         /// <summary>

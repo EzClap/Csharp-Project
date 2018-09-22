@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System;
 
 namespace Object_Classes {
     /// <summary>
@@ -107,9 +106,7 @@ namespace Object_Classes {
                     if (i == wormHoles[j, 0]) { squares[i] = new WormholeSquare("square " + i, i, wormHoles[j, 1], wormHoles[j, 2]); assigned = true; }
                     else if (i == blackHoles[j, 0]) { squares[i] = new BlackholeSquare("square " + i, i, blackHoles[j, 1], blackHoles[j, 2]); assigned = true; }
                 }
-                //this needs to be false to be assigned. if it's !assigned which means true, then it will be
-                //assigned again after the for loop is executed. 
-                //Ordinary squares should be assigned only when assigned is false. 
+
                 if (!assigned)
                 {
                     squares[i] = new Square("square " + i, i);
