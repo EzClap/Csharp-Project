@@ -18,25 +18,12 @@ namespace Space_Race
         /// <param name="args"></param>
         static void Main(string[] args)
         {      
-             DisplayIntroductionMessage();
-            /*                    
-             Set up the board in Board class (Board.SetUpBoard)
-             Determine number of players - initally play with 2 for testing purposes 
-             Create the required players in Game Logic class
-              and initialize players for start of a game             
-             loop  until game is finished           
-                call PlayGame in Game Logic class to play one round
-                Output each player's details at end of round
-             end loopC:\Users\under\Git repo\cantbegoogled\Space Race\ConsoleInterface.cs
-             Determine if anyone has won
-             Output each player's details at end of the game
-           */
-
+            DisplayIntroductionMessage();
             Board.SetUpBoard();
 
             //set number for test:
             //SpaceRaceGame.NumberOfPlayers = 3;
-            SpaceRaceGame.SetUpPlayers();
+            //SpaceRaceGame.SetUpPlayers();
 
             //this is for testing purposes only
             //for (int i = 0; i < Board.Squares.Length; i++)
@@ -69,23 +56,15 @@ namespace Space_Race
 
             //Console.WriteLine("round" + (ctr - 1));
 
-
-            DeterminePlayers();
-
-
             bool playAgain = true;
-            bool gameFinished = false;
             while (playAgain)
             {
                 DeterminePlayers();
-                while (!gameFinished)
-                {
-                    //SpaceRaceGame.PlayOneRound();
-                    Console.WriteLine("\tYeah woo spacey things! Yeah look at me go!");
-                    Console.WriteLine("\tNext Rounds...");
-                    if ("y" == Console.ReadLine()) { gameFinished = true; }
-                }
+                RunGame();
+                FinishGame();
+                playAgain = PlayAgain();
             }
+
             PressEnter();
         }//end Main
 
@@ -97,7 +76,7 @@ namespace Space_Race
         /// </summary>
         static void DisplayIntroductionMessage()
         {
-            Console.WriteLine("Welcome to Space Race.\n");
+            Console.WriteLine("\n\tWelcome to Space Race.\n");
         } //end DisplayIntroductionMessage
 
         /// <summary>
@@ -107,7 +86,7 @@ namespace Space_Race
         /// </summary>
         static void PressEnter()
         {
-            Console.Write("\nPress Enter to terminate program ...");
+            Console.Write("\n\tPress Enter to terminate program ...");
             Console.ReadLine();
         } // end PressAny
 
@@ -125,17 +104,81 @@ namespace Space_Race
                 try
                 {
                     playerInput = int.Parse(Console.ReadLine());
-                    if (playerInput < 2 || playerInput > 6) { Console.WriteLine("Error: invalid number of players entered."); }
+                    if (playerInput < 2 || playerInput > 6) { Console.WriteLine("\nError: invalid number of players entered.\n"); }
                     else { correctInput = true; }
                 }
-                catch (FormatException) { Console.WriteLine("Error: you must enter a valid number."); }
+                catch (FormatException) { Console.WriteLine("\nError: you must enter a valid number.\n"); }
             }
 
-            //SpaceRaceGame.SetUpPlayers();.
-            for (int i = 0; i < playerInput; i++) { Console.WriteLine(SpaceRaceGame.names[i]); }//SpaceRaceGame.Add(new Player(SpaceRaceGame.names[i]); }
+            SpaceRaceGame.NumberOfPlayers = playerInput;
+            SpaceRaceGame.SetUpPlayers();
         }
 
+        private static void RunGame()
+        {
+            bool gameFinished = false;
+            int round = 1;
+            while (!gameFinished)
+            {
+                Console.Write("\nPress Enter to play a round ...");
+                Console.ReadLine();
 
+                if (round == 1) { Console.WriteLine("\n\tFirst Round\n"); }
+                else { Console.WriteLine("\n\tNext Round\n"); }
+
+                SpaceRaceGame.PlayOneRound();
+
+                for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+                {
+                    if (SpaceRaceGame.Players[i].AtFinish) { gameFinished = true; }
+                    string name = SpaceRaceGame.names[i];
+                    string square = "square " + SpaceRaceGame.Players[i].Location.Number;
+                    int fuel = SpaceRaceGame.Players[i].RocketFuel;
+                    Console.WriteLine("\t" + name + " on " + square + " with " + fuel + " yottawatt of power remaining");
+                }
+
+                round++;
+            }
+        }
+
+        private static void FinishGame()
+        {
+            Console.WriteLine("\n\tThe following player(s) finished the game");
+            for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+            {
+                if (SpaceRaceGame.Players[i].AtFinish) { Console.WriteLine("\n\t\t" + SpaceRaceGame.names[i]); }
+            }
+
+            Console.WriteLine("\n\tIndividual players finished with the at the locations specified.");
+            for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+            {
+                string name = SpaceRaceGame.names[i];
+                string square = "square " + SpaceRaceGame.Players[i].Location.Number;
+                int fuel = SpaceRaceGame.Players[i].RocketFuel;
+                Console.WriteLine("\n\t\t" + name + " with " + fuel + " yottawatt of power at " + square);
+            }
+
+            Console.Write("\n\tPress Enter to continue...");
+        }
+
+        private static bool PlayAgain()
+        {
+            bool correctInput = false;
+            bool playAgain = false;
+
+            Console.WriteLine("\n\n\n\n\n");
+            while (!correctInput)
+            {
+                Console.Write("\tPlay Again? (Y or N): ");
+                string input = Console.ReadLine();
+                if ("Y" == input) { playAgain = true; correctInput = true; }
+                else if ("N" == input) { playAgain = false; correctInput = true; }
+            }
+
+            if (!playAgain) { Console.WriteLine("\n\n\tThanks for playing Space Race.\n"); }
+
+            return playAgain;
+        }
 
     }//end Console class
 }
