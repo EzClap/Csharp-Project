@@ -21,41 +21,6 @@ namespace Space_Race
             DisplayIntroductionMessage();
             Board.SetUpBoard();
 
-            //set number for test:
-            //SpaceRaceGame.NumberOfPlayers = 3;
-            //SpaceRaceGame.SetUpPlayers();
-
-            //this is for testing purposes only
-            //for (int i = 0; i < Board.Squares.Length; i++)
-            //{
-            //    Console.WriteLine(Board.Squares[i].Name);
-            //}
-            //this is for testing purposes only
-            //int ctr = 0;
-            //bool broke = false;
-            //for (int j = 0; j < 50; j++)
-            //{
-
-            //    for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
-            //    {
-            //        if (SpaceRaceGame.Players[i].AtFinish)
-            //        {
-            //            broke = true;
-            //            break;
-
-            //        }
-            //        Console.Write(SpaceRaceGame.Players[i].RocketFuel + "  ");
-            //        Console.WriteLine(SpaceRaceGame.Players[i].Name);
-            //        Console.WriteLine(SpaceRaceGame.Players[i].Location.Name);
-
-            //    }
-            //    if (broke) { break; }
-            //    SpaceRaceGame.PlayOneRound();
-            //    ctr++;
-            //}
-
-            //Console.WriteLine("round" + (ctr - 1));
-
             bool playAgain = true;
             while (playAgain)
             {
