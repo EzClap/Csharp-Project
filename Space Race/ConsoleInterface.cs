@@ -146,6 +146,7 @@ namespace Space_Race
             {
                 Console.Write("\tPlay Again? (Y or N): ");
                 string input = Console.ReadLine();
+
                 if ("Y" == input || "y" == input) { playAgain = true; correctInput = true; }
                 else if ("N" == input || "n" == input) { playAgain = false; correctInput = true; }
             }
