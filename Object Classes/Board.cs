@@ -102,10 +102,10 @@ namespace Object_Classes {
             {
                 bool assigned = false;
                 for (int j = 0; j < wormHoles.GetLength(0); j++)
-                {
-                    if (i == wormHoles[j, 0]) { squares[i] = new WormholeSquare("square " + i, i, wormHoles[j, 1], wormHoles[j, 2]); assigned = true; }
-                    else if (i == blackHoles[j, 0]) { squares[i] = new BlackholeSquare("square " + i, i, blackHoles[j, 1], blackHoles[j, 2]); assigned = true; }
-                }
+                { if (i == wormHoles[j, 0]) { squares[i] = new WormholeSquare("square " + i, i, wormHoles[j, 1], wormHoles[j, 2]); assigned = true; } }
+
+                for (int j = 0; j < blackHoles.GetLength(0); j++)
+                { if (i == blackHoles[j, 0]) { squares[i] = new BlackholeSquare("square " + i, i, blackHoles[j, 1], blackHoles[j, 2]); assigned = true; } }
 
                 if (!assigned)
                 {
