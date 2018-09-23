@@ -102,10 +102,24 @@ namespace Object_Classes {
             {
                 bool assigned = false;
                 for (int j = 0; j < wormHoles.GetLength(0); j++)
-                { if (i == wormHoles[j, 0]) { squares[i] = new WormholeSquare("square " + i, i, wormHoles[j, 1], wormHoles[j, 2]); assigned = true; } }
+                {
+                    if (i == wormHoles[j, 0])
+                    {
+                        FindDestSquare(wormHoles, i, out int destNum, out int amount);
+                        squares[i] = new WormholeSquare("square " + i, i, destNum, amount);
+                        assigned = true;
+                    }
+                }
 
                 for (int j = 0; j < blackHoles.GetLength(0); j++)
-                { if (i == blackHoles[j, 0]) { squares[i] = new BlackholeSquare("square " + i, i, blackHoles[j, 1], blackHoles[j, 2]); assigned = true; } }
+                {
+                    if (i == blackHoles[j, 0])
+                    {
+                        FindDestSquare(blackHoles, i, out int destNum, out int amount);
+                        squares[i] = new BlackholeSquare("square " + i, i, destNum, amount);
+                        assigned = true;
+                    }
+                }
 
                 if (!assigned)
                 {
@@ -131,16 +145,15 @@ namespace Object_Classes {
         private static void FindDestSquare(int[,] holes, int squareNum, out int destNum, out int amount) {
             const int start = 0, exit = 1, fuel = 2;
             destNum = 0; amount = 0;
-
-            bool assigned = false;
-            for (int i = 0; i < wormHoles.GetLength(0); i++)
+            
+            for (int i = 0; i < holes.GetLength(0); i++)
             {
-                if (squareNum == wormHoles[i, 0]) { destNum = wormHoles[i, 1]; amount = wormHoles[i, 2]; assigned = true; }
-                if (squareNum == blackHoles[i, 0]) { destNum = blackHoles[i, 1]; amount = blackHoles[i, 2]; assigned = true; }
+                if (squareNum == holes[i, 0])
+                {
+                    destNum = holes[i, 1];
+                    amount = holes[i, 2];
+                }
             }
-
-            //same as above
-            if (!assigned) { destNum = squareNum; amount = fuel; }
         } //end FindDestSquare
 
     } //end class Board
