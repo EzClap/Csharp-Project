@@ -31,12 +31,11 @@ namespace Space_Race
              Determine if anyone has won
              Output each player's details at end of the game
            */
-<<<<<<< HEAD
 
             Board.SetUpBoard();
 
             //set number for test:
-            //SpaceRaceGame.NumberOfPlayers = 3;
+            SpaceRaceGame.NumberOfPlayers = 3;
             SpaceRaceGame.SetUpPlayers();
 
             //this is for testing purposes only
@@ -45,33 +44,34 @@ namespace Space_Race
             //    Console.WriteLine(Board.Squares[i].Name);
             //}
             //this is for testing purposes only
-            //int ctr = 0;
-            //bool broke = false;
-            //for (int j = 0; j < 50; j++) {
-                
-            //    for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
-            //    {
-            //        if (SpaceRaceGame.Players[i].AtFinish)
-            //        {
-            //            broke = true;
-            //           break;
+            int ctr = 0;
+            bool broke = false;
+            for (int j = 0; j < 50; j++)
+            {
 
-            //        }
-            //        Console.Write(SpaceRaceGame.Players[i].RocketFuel + "  ");
-            //        Console.WriteLine(SpaceRaceGame.Players[i].Name);
-            //        Console.WriteLine(SpaceRaceGame.Players[i].Location.Name);
+                for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+                {
+                    if (SpaceRaceGame.Players[i].AtFinish)
+                    {
+                        broke = true;
+                        break;
 
-            //    }
-            //    if (broke) { break; }
-            //    SpaceRaceGame.PlayOneRound();
-            //    ctr++;
-            //}
+                    }
+                    Console.Write(SpaceRaceGame.Players[i].RocketFuel + "  ");
+                    Console.WriteLine(SpaceRaceGame.Players[i].Name);
+                    Console.WriteLine(SpaceRaceGame.Players[i].Location.Name);
 
-            //Console.WriteLine("round" + (ctr - 1));
+                }
+                if (broke) { break; }
+                SpaceRaceGame.PlayOneRound();
+                ctr++;
+            }
+
+            Console.WriteLine("round" + (ctr - 1));
 
 
             DeterminePlayers();
-=======
+
             bool playAgain = true;
             bool gameFinished = false;
             while (playAgain)
@@ -85,7 +85,6 @@ namespace Space_Race
                     if ("y" == Console.ReadLine()) { gameFinished = true; }
                 }
             }
->>>>>>> 40c696af42cf71bafe54d706780cac96353a1753
             PressEnter();
         }//end Main
 

@@ -20,7 +20,6 @@ namespace Game_Logic_Class
             }
             set
             {
-<<<<<<< HEAD
                 //Changed to limit the number of players(modified)
                 if (value < MIN_PLAYERS)
                 {
@@ -34,9 +33,6 @@ namespace Game_Logic_Class
                 {
                     numberOfPlayers = value;
                 }
-=======
-                numberOfPlayers = value;
->>>>>>> 40c696af42cf71bafe54d706780cac96353a1753
             }
         }
 

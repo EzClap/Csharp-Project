@@ -156,13 +156,7 @@ namespace Object_Classes {
                 location.LandOn(this);
                 if (Board.Squares[position].NextSquare() == null)
                 {
-<<<<<<< HEAD
                     location = Board.Squares[position];
-=======
-                    location = Board.Squares[i].NextSquare();
-                    position = location.Number;
-                    //fuelLeft = 
->>>>>>> 40c696af42cf71bafe54d706780cac96353a1753
                 }
                 
             }
