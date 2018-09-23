@@ -74,6 +74,8 @@ namespace Game_Logic_Class
             //      create a new player object
             //      initialize player's instance variables for start of a game
             //      add player to the binding list
+            players.Clear();
+
             for (int i = 0; i < numberOfPlayers; i++)
             {
                 players.Add(new Player(names[i]));
