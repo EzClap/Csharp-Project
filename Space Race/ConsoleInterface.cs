@@ -94,11 +94,11 @@ namespace Space_Race
 
                 SpaceRaceGame.PlayOneRound();
 
+                TestPlayers(out bool playersAtFinish, out bool playersLostPower);
+                if (playersAtFinish || playersLostPower) { gameFinished = true; }
+
                 for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
                 {
-                    TestPlayers(out bool playersAtFinish, out bool playersLostPower);
-                    if (playersAtFinish || playersLostPower) { gameFinished = true; }
-
                     string name = SpaceRaceGame.names[i];
                     string square = "square " + SpaceRaceGame.Players[i].Location.Number;
                     int fuel = SpaceRaceGame.Players[i].RocketFuel;
@@ -115,9 +115,9 @@ namespace Space_Race
         private static void FinishGame()
         {
             TestPlayers(out bool playersAtFinish, out bool playersLostPower);
-
             if (playersLostPower) { Console.WriteLine("\n\tAll players lost power!"); }
             else { Console.WriteLine("\n\tThe following player(s) finished the game"); }
+
             for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
             {
                 if (SpaceRaceGame.Players[i].AtFinish) { Console.WriteLine("\n\t\t" + SpaceRaceGame.names[i]); }
