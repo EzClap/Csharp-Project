@@ -144,7 +144,7 @@ namespace Object_Classes {
         /// <param name="d2">second die</param>
         public void Play(Die d1, Die d2) {
             //  CODE NEEDS TO BE ADDED HERE
-            if (this.hasPower && !ReachedFinalSquare())
+            if (this.hasPower && !atFinish)
             {
                 d1.Reset();
                 d2.Reset();
@@ -158,7 +158,8 @@ namespace Object_Classes {
                 {
                     location = Board.Squares[position];
                 }
-                
+
+                ReachedFinalSquare();
             }
         } // end Play.
 
@@ -191,10 +192,14 @@ namespace Object_Classes {
             if (position == Board.FINISH_SQUARE_NUMBER)
             {
                 atFinish = true;
-                return true;
             }
 
-            return false; // so the class can compile without error
+            else
+            {
+                atFinish = false;
+            }
+
+            return atFinish; // so the class can compile without error
         } //end ReachedFinalSquare
 
 
