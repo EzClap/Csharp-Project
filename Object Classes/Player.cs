@@ -199,7 +199,10 @@ namespace Object_Classes {
                 atFinish = false;
             }
 
-            return atFinish; // so the class can compile without error
+            return atFinish; // so the class can compile without error. (Consult tutor see if 
+                                                                  //we can change the template code
+                                                                  //was return false;)
+            
         } //end ReachedFinalSquare
 
 
