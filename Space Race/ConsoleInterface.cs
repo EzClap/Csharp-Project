@@ -31,7 +31,6 @@ namespace Space_Race
              Determine if anyone has won
              Output each player's details at end of the game
            */
-<<<<<<< HEAD
 
             Board.SetUpBoard();
 
@@ -71,7 +70,6 @@ namespace Space_Race
 
 
             DeterminePlayers();
-=======
             bool playAgain = true;
             bool gameFinished = false;
             while (playAgain)
@@ -85,7 +83,6 @@ namespace Space_Race
                     if ("y" == Console.ReadLine()) { gameFinished = true; }
                 }
             }
->>>>>>> 40c696af42cf71bafe54d706780cac96353a1753
             PressEnter();
         }//end Main
 
@@ -111,6 +108,9 @@ namespace Space_Race
             Console.ReadLine();
         } // end PressAny
 
+        /// <summary>
+        /// Asks user for # players and assigns to SpaceRaceGame
+        /// </summary>
         private static void DeterminePlayers()
         {
             bool correctInput = false;
