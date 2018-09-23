@@ -118,6 +118,7 @@ namespace Space_Race
         {
             bool gameFinished = false;
             int round = 1;
+
             while (!gameFinished)
             {
                 Console.Write("\nPress Enter to play a round ...");
@@ -130,20 +131,28 @@ namespace Space_Race
 
                 for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
                 {
-                    if (SpaceRaceGame.Players[i].AtFinish) { gameFinished = true; }
+                    TestPlayers(out bool playersAtFinish, out bool playersLostPower);
+                    if (playersAtFinish || playersLostPower) { gameFinished = true; }
+
                     string name = SpaceRaceGame.names[i];
                     string square = "square " + SpaceRaceGame.Players[i].Location.Number;
                     int fuel = SpaceRaceGame.Players[i].RocketFuel;
                     Console.WriteLine("\t" + name + " on " + square + " with " + fuel + " yottawatt of power remaining");
                 }
 
+                //debug lost power
+                //for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++) { SpaceRaceGame.Players[i].RocketFuel = 0; }
+                
                 round++;
             }
         }
 
         private static void FinishGame()
         {
-            Console.WriteLine("\n\tThe following player(s) finished the game");
+            TestPlayers(out bool playersAtFinish, out bool playersLostPower);
+
+            if (playersLostPower) { Console.WriteLine("\n\tAll players lost power!"); }
+            else { Console.WriteLine("\n\tThe following player(s) finished the game"); }
             for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
             {
                 if (SpaceRaceGame.Players[i].AtFinish) { Console.WriteLine("\n\t\t" + SpaceRaceGame.names[i]); }
@@ -159,6 +168,7 @@ namespace Space_Race
             }
 
             Console.Write("\n\tPress Enter to continue...");
+            Console.ReadLine();
         }
 
         private static bool PlayAgain()
@@ -171,13 +181,28 @@ namespace Space_Race
             {
                 Console.Write("\tPlay Again? (Y or N): ");
                 string input = Console.ReadLine();
-                if ("Y" == input) { playAgain = true; correctInput = true; }
-                else if ("N" == input) { playAgain = false; correctInput = true; }
+                if ("Y" == input || "y" == input) { playAgain = true; correctInput = true; }
+                else if ("N" == input || "n" == input) { playAgain = false; correctInput = true; }
             }
 
             if (!playAgain) { Console.WriteLine("\n\n\tThanks for playing Space Race.\n"); }
 
             return playAgain;
+        }
+
+        private static void TestPlayers(out bool playersAtFinish, out bool playersLostPower)
+        {
+            playersAtFinish = false;
+            playersLostPower = false;
+            int playersHasPower = 0;
+
+            for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+            {
+                if (SpaceRaceGame.Players[i].AtFinish) { playersAtFinish = true; }
+                if (!SpaceRaceGame.Players[i].HasPower) { playersHasPower++; }
+            }
+
+            if (playersHasPower == SpaceRaceGame.NumberOfPlayers) { playersLostPower = true; }
         }
 
     }//end Console class
