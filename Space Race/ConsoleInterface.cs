@@ -71,10 +71,8 @@ namespace Space_Race
 
 
             DeterminePlayers();
-<<<<<<< HEAD
 
-=======
->>>>>>> 91cdb5e862c0f41f0d09acbb12aa7114cff4df05
+
             bool playAgain = true;
             bool gameFinished = false;
             while (playAgain)
