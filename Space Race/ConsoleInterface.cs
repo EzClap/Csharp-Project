@@ -105,7 +105,7 @@ namespace Space_Race
                     Console.WriteLine("\t{0} on {1} with {2} yottawatt of power remaining", name, square, fuel);
                 }
 
-                //debug lost power
+                //debug lost power-.
                 //for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++) { SpaceRaceGame.Players[i].RocketFuel = 0; }
                 
                 round++;
