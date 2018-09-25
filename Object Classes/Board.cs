@@ -93,16 +93,39 @@ namespace Object_Classes {
         /// Post: board is constructed
         /// </summary>
         public static void SetUpBoard() {
-
+            
             // Create the 'start' square where all players will start.
             squares[START_SQUARE_NUMBER] = new Square("Start", START_SQUARE_NUMBER);
 
             // Create the main part of the board, squares 1 .. 54
-            //  CODE NEEDS TO BE ADDED HERE
-            //
-            //   Need to call the appropriate constructor for each square
-            //       either new Square(...),  new WormholeSquare(...) or new BlackholeSquare(...)
-            //
+            for (int i = 1; i < FINISH_SQUARE_NUMBER; i++)
+            {
+                bool assigned = false;
+                for (int j = 0; j < wormHoles.GetLength(0); j++)
+                {
+                    if (i == wormHoles[j, 0])
+                    {
+                        FindDestSquare(wormHoles, i, out int destNum, out int amount);
+                        squares[i] = new WormholeSquare("square " + i, i, destNum, amount);
+                        assigned = true;
+                    }
+                }
+
+                for (int j = 0; j < blackHoles.GetLength(0); j++)
+                {
+                    if (i == blackHoles[j, 0])
+                    {
+                        FindDestSquare(blackHoles, i, out int destNum, out int amount);
+                        squares[i] = new BlackholeSquare("square " + i, i, destNum, amount);
+                        assigned = true;
+                    }
+                }
+
+                if (!assigned)
+                {
+                    squares[i] = new Square("square " + i, i);
+                }
+            }
 
             // Create the 'finish' square.
             squares[FINISH_SQUARE_NUMBER] = new Square("Finish", FINISH_SQUARE_NUMBER);
@@ -122,9 +145,15 @@ namespace Object_Classes {
         private static void FindDestSquare(int[,] holes, int squareNum, out int destNum, out int amount) {
             const int start = 0, exit = 1, fuel = 2;
             destNum = 0; amount = 0;
-
-            //  CODE NEEDS TO BE ADDED HERE 
-
+            
+            for (int i = 0; i < holes.GetLength(0); i++)
+            {
+                if (squareNum == holes[i, 0])
+                {
+                    destNum = holes[i, 1];
+                    amount = holes[i, 2];
+                }
+            }
         } //end FindDestSquare
 
     } //end class Board

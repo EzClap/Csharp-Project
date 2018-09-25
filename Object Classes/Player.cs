@@ -26,9 +26,16 @@ namespace Object_Classes {
             get {
                 return position;
             }
-
+            //set the limit so that position wont get out of bound(modified)
             set {
-                position = value;
+                if (value > Board.FINISH_SQUARE_NUMBER)
+                {
+                    position = Board.FINISH_SQUARE_NUMBER;
+                }
+                else
+                {
+                    position = value;
+                }
             }
         }
 
@@ -136,10 +143,24 @@ namespace Object_Classes {
         /// <param name="d1">first die</param>
         /// <param name="d2">second die</param>
         public void Play(Die d1, Die d2) {
-
             //  CODE NEEDS TO BE ADDED HERE
+            if (this.hasPower && !atFinish)
+            {
+                d1.Reset();
+                d2.Reset();
+                int forwardNum = d1.Roll() + d2.Roll();
+                Position += forwardNum;
+                location = Board.Squares[position];
 
+                //this updates the location and position and fuel
+                location.LandOn(this);
+                if (Board.Squares[position].NextSquare() == null)
+                {
+                    location = Board.Squares[position];
+                }
 
+                ReachedFinalSquare();
+            }
         } // end Play.
 
 
@@ -168,12 +189,22 @@ namespace Object_Classes {
         private bool ReachedFinalSquare() {
 
             //  CODE NEEDS TO BE ADDED HERE
+            if (position == Board.FINISH_SQUARE_NUMBER)
+            {
+                atFinish = true;
+            }
 
-            return false; // so the class can compile without error
+            else
+            {
+                atFinish = false;
+            }
+
+            return atFinish; // so the class can compile without error. (Consult tutor see if 
+                                                                  //we can change the template code
+                                                                  //was return false;)
+            
         } //end ReachedFinalSquare
 
 
-
     } //end class Player
-
 }
