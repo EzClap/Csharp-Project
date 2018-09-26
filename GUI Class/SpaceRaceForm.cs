@@ -1,10 +1,10 @@
 ﻿using System;
 //  Uncomment  this using statement after you have remove the large Block Comment below 
-//using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 using Game_Logic_Class;
 //  Uncomment  this using statement when you declare any object from Object Classes, eg Board,Square etc.
-//using Object_Classes;
+using Object_Classes;
 
 namespace GUI_Class
 {
@@ -24,13 +24,13 @@ namespace GUI_Class
         {
             InitializeComponent();
 
-            // Board.SetUpBoard();
-            // ResizeGUIGameBoard();
-            // SetUpGUIGameBoard();
-            // SetUpPlayersDataGridView
-            // DetermineNumberOfPlayers();
-            // SpaceRaceGame.SetUpPlayers();
-            // PrepareToPlayGame();
+            Board.SetUpBoard();
+            ResizeGUIGameBoard();
+            SetUpGUIGameBoard();
+            SetUpPlayersDataGridView();
+            DetermineNumberOfPlayers();
+            SpaceRaceGame.SetUpPlayers();
+            PrepareToPlayGame();
         }
 
 
@@ -54,7 +54,7 @@ namespace GUI_Class
         //        Likewise with "playerDataGridView" by your DataGridView (Name)
         //  ******************************************************************************************
 
-/*
+
         /// <summary>
         /// Resizes the entire form, so that the individual squares have their correct size, 
         /// as specified by SquareControl.SQUARE_SIZE.  
@@ -115,16 +115,50 @@ namespace GUI_Class
         private static void MapSquareNumToScreenRowAndColumn(int squareNum, out int screenRow, out int screenCol)
         {
             // Code needs to be added here to do the mapping
-
+            //there may be a better way???? Consult Jerara or tutor.
+            if (squareNum >= 0 && squareNum <= 7)
+            {
+                screenCol = squareNum;
+                screenRow = 6;
+            }
+            else if (squareNum >= 8 && squareNum <= 15)
+            {
+                screenRow = 5;
+                screenCol = 15 - squareNum;
+            }
+            else if (squareNum >= 16 && squareNum <= 23)
+            {
+                screenRow = 4;
+                screenCol = squareNum - 16;
+            }
+            else if (squareNum >= 24 && squareNum <= 31)
+            {
+                screenRow = 3;
+                screenCol = 31 - squareNum;
+            }
+            else if (squareNum >= 32 && squareNum <= 39)
+            {
+                screenRow = 2;
+                screenCol = squareNum - 32;
+            }
+            else if (squareNum >= 40 && squareNum <= 47)
+            {
+                screenRow = 1;
+                screenCol = 47 - squareNum;
+            }
+            else
+            {
+                screenRow = 0;
+                screenCol = squareNum - 48;
+            }
+            
             // Makes the compiler happy - these two lines below need to deleted 
             //    once mapping code is written above
-            screenRow = 0;
-            screenCol = 0;
 
         }//end MapSquareNumToScreenRowAndColumn
 
 
-        private void SetupPlayersDataGridView()
+        private void SetUpPlayersDataGridView()
         {
             // Stop the playersDataGridView from using all Player columns.
             playersDataGridView.AutoGenerateColumns = false;
@@ -132,7 +166,7 @@ namespace GUI_Class
             playersDataGridView.DataSource = SpaceRaceGame.Players;
 
         }// end SetUpPlayersDataGridView
-*/
+
 
 
         /// <summary>
@@ -145,17 +179,18 @@ namespace GUI_Class
         private void DetermineNumberOfPlayers()
         {
             // Store the SelectedItem property of the ComboBox in a string
+            string var = playerNumDrop.Text;
 
             // Parse string to a number
-
+            int num = int.Parse(var);
             // Set the NumberOfPlayers in the SpaceRaceGame class to that number
-
+            SpaceRaceGame.NumberOfPlayers = num;
         }//end DetermineNumberOfPlayers
 
         /// <summary>
         /// The players' tokens are placed on the Start square
         /// </summary>
-        private void PrepareToPlay()
+        private void PrepareToPlayGame()
         {
             // More code will be needed here to deal with restarting 
             // a game after the Reset button has been clicked. 
@@ -186,10 +221,10 @@ namespace GUI_Class
             // Uncomment the following lines once you've added the tableLayoutPanel to your form. 
             //     and delete the "return null;" 
             //
-            // MapSquareNumToScreenRowAndColumn(squareNum, out screenRow, out screenCol);
-            // return (SquareControl)tableLayoutPanel.GetControlFromPosition(screenCol, screenRow);
+            MapSquareNumToScreenRowAndColumn(squareNum, out screenRow, out screenCol);
+            return (SquareControl)tableLayoutPanel.GetControlFromPosition(screenCol, screenRow);
 
-            return null; //added so code compiles
+            //return null; //added so code compiles
         }
 
 
@@ -203,9 +238,9 @@ namespace GUI_Class
         private int GetSquareNumberOfPlayer(int playerNumber)
         {
             // Code needs to be added here.
-
+            return SpaceRaceGame.Players[playerNumber].Position;
             //     delete the "return -1;" once body of method has been written 
-            return -1;
+            //return -1;
         }//end GetSquareNumberOfPlayer
 
 
@@ -221,7 +256,7 @@ namespace GUI_Class
         private void RefreshBoardTablePanelLayout()
         {
             // Uncomment the following line once you've added the tableLayoutPanel to your form.
-            //      tableLayoutPanel.Invalidate(true);
+                  tableLayoutPanel.Invalidate(true);
         }
 
         /// <summary>
@@ -262,9 +297,69 @@ namespace GUI_Class
             //       using the typeOfGuiUpdate, update the appropriate element of 
             //          the ContainsPlayers array of the SquareControl object.
             //          
+            for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+            {
+                if (typeOfGuiUpdate == TypeOfGuiUpdate.AddPlayer)
+                {
+                    SquareControlAt(GetSquareNumberOfPlayer(i));
+                    typeOfGuiUpdate = TypeOfGuiUpdate.AddPlayer;
+                    SquareControlAt(GetSquareNumberOfPlayer(i)).ContainsPlayers[i] = true;
+                }
+                else if (typeOfGuiUpdate == TypeOfGuiUpdate.RemovePlayer)
+                {
+                    SquareControlAt(GetSquareNumberOfPlayer(i));
+                    typeOfGuiUpdate = TypeOfGuiUpdate.RemovePlayer;
+                    SquareControlAt(GetSquareNumberOfPlayer(i)).ContainsPlayers[i] = false;
+                }
+                
+            }
+
 
             RefreshBoardTablePanelLayout();//must be the last line in this method. Do not put inside above loop.
         } //end UpdatePlayersGuiLocations
 
+        private void rollButton_Click(object sender, EventArgs e)
+        {   
+            //button enable bools change
+            resetButton.Enabled = true;
+            playersDataGridView.Enabled = false;
+            playerNumDrop.Enabled = false;
+            //play one round and update the GUI
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+            SpaceRaceGame.PlayOneRound();
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+            UpdatesPlayersDataGridView();
+        }
+        
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            //button enable bools change
+            resetButton.Enabled = false;
+            playersDataGridView.Enabled = true;
+            playerNumDrop.Enabled = true;
+            //set players and update GUI
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+            SpaceRaceGame.SetUpPlayers();
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+            UpdatesPlayersDataGridView();
+        }
+
+        private void SpaceRaceForm_Load(object sender, EventArgs e)
+        {
+            //button enable bools change
+            resetButton.Enabled = false;
+            exitButton.Enabled = true;
+            playerNumDrop.Enabled = true;
+
+        }
+
+        private void playerNumDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+            SpaceRaceGame.NumberOfPlayers = int.Parse(playerNumDrop.Text);
+            SpaceRaceGame.SetUpPlayers();
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+            //UpdatesPlayersDataGridView();
+        }
     }// end class
 }
