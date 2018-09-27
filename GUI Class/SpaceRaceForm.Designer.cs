@@ -30,29 +30,29 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.exitButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.SpaceRaceLabel = new System.Windows.Forms.Label();
-            this.resetButton = new System.Windows.Forms.Button();
-            this.rollButton = new System.Windows.Forms.Button();
-            this.playerNumDrop = new System.Windows.Forms.ComboBox();
-            this.numOfPlayerLabel = new System.Windows.Forms.Label();
-            this.playerLabel = new System.Windows.Forms.Label();
-            this.playersDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.stepYes = new System.Windows.Forms.RadioButton();
             this.stepNo = new System.Windows.Forms.RadioButton();
+            this.stepYes = new System.Windows.Forms.RadioButton();
+            this.playersDataGridView = new System.Windows.Forms.DataGridView();
             this.playerTokenImageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rocketFuelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.playerLabel = new System.Windows.Forms.Label();
+            this.numOfPlayerLabel = new System.Windows.Forms.Label();
+            this.playerNumDrop = new System.Windows.Forms.ComboBox();
+            this.rollButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.SpaceRaceLabel = new System.Windows.Forms.Label();
+            this.exitButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.playersDataGridView)).BeginInit();
             this.groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.playersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -79,21 +79,9 @@
             this.splitContainer1.Panel2.Controls.Add(this.SpaceRaceLabel);
             this.splitContainer1.Panel2.Controls.Add(this.exitButton);
             this.splitContainer1.Size = new System.Drawing.Size(1179, 814);
-            this.splitContainer1.SplitterDistance = 885;
+            this.splitContainer1.SplitterDistance = 884;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // exitButton
-            // 
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(159, 770);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(100, 28);
-            this.exitButton.TabIndex = 0;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // tableLayoutPanel
             // 
@@ -119,80 +107,47 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(885, 814);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(884, 814);
             this.tableLayoutPanel.TabIndex = 0;
             // 
-            // SpaceRaceLabel
+            // groupBox
             // 
-            this.SpaceRaceLabel.AutoSize = true;
-            this.SpaceRaceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpaceRaceLabel.Location = new System.Drawing.Point(56, 32);
-            this.SpaceRaceLabel.Name = "SpaceRaceLabel";
-            this.SpaceRaceLabel.Size = new System.Drawing.Size(179, 32);
-            this.SpaceRaceLabel.TabIndex = 1;
-            this.SpaceRaceLabel.Text = "Space Race";
+            this.groupBox.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBox.Controls.Add(this.stepNo);
+            this.groupBox.Controls.Add(this.stepYes);
+            this.groupBox.Enabled = false;
+            this.groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.Location = new System.Drawing.Point(84, 517);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(140, 55);
+            this.groupBox.TabIndex = 8;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "Single Step?";
+            this.groupBox.Enter += new System.EventHandler(this.groupBox_Enter);
             // 
-            // resetButton
+            // stepNo
             // 
-            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetButton.Location = new System.Drawing.Point(53, 770);
-            this.resetButton.Margin = new System.Windows.Forms.Padding(4);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(100, 28);
-            this.resetButton.TabIndex = 2;
-            this.resetButton.Text = "Game Reset";
-            this.resetButton.UseCompatibleTextRendering = true;
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            this.stepNo.AutoSize = true;
+            this.stepNo.Location = new System.Drawing.Point(85, 28);
+            this.stepNo.Name = "stepNo";
+            this.stepNo.Size = new System.Drawing.Size(49, 21);
+            this.stepNo.TabIndex = 1;
+            this.stepNo.TabStop = true;
+            this.stepNo.Text = "No";
+            this.stepNo.UseVisualStyleBackColor = true;
+            this.stepNo.Click += new System.EventHandler(this.stepNo_Click);
             // 
-            // rollButton
+            // stepYes
             // 
-            this.rollButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rollButton.Location = new System.Drawing.Point(106, 734);
-            this.rollButton.Margin = new System.Windows.Forms.Padding(4);
-            this.rollButton.Name = "rollButton";
-            this.rollButton.Size = new System.Drawing.Size(100, 28);
-            this.rollButton.TabIndex = 3;
-            this.rollButton.Text = "Roll Dice";
-            this.rollButton.UseCompatibleTextRendering = true;
-            this.rollButton.UseVisualStyleBackColor = true;
-            this.rollButton.Click += new System.EventHandler(this.rollButton_Click);
-            // 
-            // playerNumDrop
-            // 
-            this.playerNumDrop.FormattingEnabled = true;
-            this.playerNumDrop.Items.AddRange(new object[] {
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"});
-            this.playerNumDrop.Location = new System.Drawing.Point(208, 97);
-            this.playerNumDrop.Name = "playerNumDrop";
-            this.playerNumDrop.Size = new System.Drawing.Size(40, 24);
-            this.playerNumDrop.TabIndex = 4;
-            this.playerNumDrop.Text = "6";
-            this.playerNumDrop.SelectedIndexChanged += new System.EventHandler(this.playerNumDrop_SelectedIndexChanged);
-            // 
-            // numOfPlayerLabel
-            // 
-            this.numOfPlayerLabel.AutoSize = true;
-            this.numOfPlayerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numOfPlayerLabel.Location = new System.Drawing.Point(40, 98);
-            this.numOfPlayerLabel.Name = "numOfPlayerLabel";
-            this.numOfPlayerLabel.Size = new System.Drawing.Size(148, 18);
-            this.numOfPlayerLabel.TabIndex = 5;
-            this.numOfPlayerLabel.Text = "Number of Players";
-            // 
-            // playerLabel
-            // 
-            this.playerLabel.AutoSize = true;
-            this.playerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerLabel.Location = new System.Drawing.Point(89, 162);
-            this.playerLabel.Name = "playerLabel";
-            this.playerLabel.Size = new System.Drawing.Size(117, 32);
-            this.playerLabel.TabIndex = 6;
-            this.playerLabel.Text = "Players";
+            this.stepYes.AutoSize = true;
+            this.stepYes.Location = new System.Drawing.Point(9, 28);
+            this.stepYes.Name = "stepYes";
+            this.stepYes.Size = new System.Drawing.Size(56, 21);
+            this.stepYes.TabIndex = 0;
+            this.stepYes.TabStop = true;
+            this.stepYes.Text = "Yes";
+            this.stepYes.UseVisualStyleBackColor = true;
+            this.stepYes.Click += new System.EventHandler(this.stepYes_Click);
             // 
             // playersDataGridView
             // 
@@ -212,42 +167,6 @@
             this.playersDataGridView.RowTemplate.Height = 24;
             this.playersDataGridView.Size = new System.Drawing.Size(263, 228);
             this.playersDataGridView.TabIndex = 7;
-            // 
-            // groupBox
-            // 
-            this.groupBox.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.groupBox.Controls.Add(this.stepNo);
-            this.groupBox.Controls.Add(this.stepYes);
-            this.groupBox.Enabled = false;
-            this.groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox.Location = new System.Drawing.Point(84, 517);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(140, 55);
-            this.groupBox.TabIndex = 8;
-            this.groupBox.TabStop = false;
-            this.groupBox.Text = "Single Step?";
-            // 
-            // stepYes
-            // 
-            this.stepYes.AutoSize = true;
-            this.stepYes.Location = new System.Drawing.Point(9, 28);
-            this.stepYes.Name = "stepYes";
-            this.stepYes.Size = new System.Drawing.Size(56, 21);
-            this.stepYes.TabIndex = 0;
-            this.stepYes.TabStop = true;
-            this.stepYes.Text = "Yes";
-            this.stepYes.UseVisualStyleBackColor = true;
-            // 
-            // stepNo
-            // 
-            this.stepNo.AutoSize = true;
-            this.stepNo.Location = new System.Drawing.Point(85, 28);
-            this.stepNo.Name = "stepNo";
-            this.stepNo.Size = new System.Drawing.Size(49, 21);
-            this.stepNo.TabIndex = 1;
-            this.stepNo.TabStop = true;
-            this.stepNo.Text = "No";
-            this.stepNo.UseVisualStyleBackColor = true;
             // 
             // playerTokenImageDataGridViewImageColumn
             // 
@@ -285,13 +204,97 @@
             // 
             this.playerBindingSource.DataSource = typeof(Object_Classes.Player);
             // 
+            // playerLabel
+            // 
+            this.playerLabel.AutoSize = true;
+            this.playerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerLabel.Location = new System.Drawing.Point(89, 162);
+            this.playerLabel.Name = "playerLabel";
+            this.playerLabel.Size = new System.Drawing.Size(117, 32);
+            this.playerLabel.TabIndex = 6;
+            this.playerLabel.Text = "Players";
+            // 
+            // numOfPlayerLabel
+            // 
+            this.numOfPlayerLabel.AutoSize = true;
+            this.numOfPlayerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numOfPlayerLabel.Location = new System.Drawing.Point(40, 98);
+            this.numOfPlayerLabel.Name = "numOfPlayerLabel";
+            this.numOfPlayerLabel.Size = new System.Drawing.Size(148, 18);
+            this.numOfPlayerLabel.TabIndex = 5;
+            this.numOfPlayerLabel.Text = "Number of Players";
+            // 
+            // playerNumDrop
+            // 
+            this.playerNumDrop.FormattingEnabled = true;
+            this.playerNumDrop.Items.AddRange(new object[] {
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.playerNumDrop.Location = new System.Drawing.Point(208, 97);
+            this.playerNumDrop.Name = "playerNumDrop";
+            this.playerNumDrop.Size = new System.Drawing.Size(40, 24);
+            this.playerNumDrop.TabIndex = 4;
+            this.playerNumDrop.Text = "6";
+            this.playerNumDrop.SelectedIndexChanged += new System.EventHandler(this.playerNumDrop_SelectedIndexChanged);
+            // 
+            // rollButton
+            // 
+            this.rollButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rollButton.Location = new System.Drawing.Point(106, 734);
+            this.rollButton.Margin = new System.Windows.Forms.Padding(4);
+            this.rollButton.Name = "rollButton";
+            this.rollButton.Size = new System.Drawing.Size(100, 28);
+            this.rollButton.TabIndex = 3;
+            this.rollButton.Text = "Roll Dice";
+            this.rollButton.UseCompatibleTextRendering = true;
+            this.rollButton.UseVisualStyleBackColor = true;
+            this.rollButton.Click += new System.EventHandler(this.rollButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetButton.Location = new System.Drawing.Point(37, 771);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(4);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(108, 27);
+            this.resetButton.TabIndex = 2;
+            this.resetButton.Text = "Game Reset";
+            this.resetButton.UseCompatibleTextRendering = true;
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // SpaceRaceLabel
+            // 
+            this.SpaceRaceLabel.AutoSize = true;
+            this.SpaceRaceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpaceRaceLabel.Location = new System.Drawing.Point(56, 32);
+            this.SpaceRaceLabel.Name = "SpaceRaceLabel";
+            this.SpaceRaceLabel.Size = new System.Drawing.Size(179, 32);
+            this.SpaceRaceLabel.TabIndex = 1;
+            this.SpaceRaceLabel.Text = "Space Race";
+            // 
+            // exitButton
+            // 
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Location = new System.Drawing.Point(159, 770);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(100, 28);
+            this.exitButton.TabIndex = 0;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
             // SpaceRaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 814);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SpaceRaceForm";
             this.Text = "Space Race";
             this.Load += new System.EventHandler(this.SpaceRaceForm_Load);
@@ -301,9 +304,9 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.playersDataGridView)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.playersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             this.ResumeLayout(false);
 

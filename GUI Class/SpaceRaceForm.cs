@@ -195,6 +195,8 @@ namespace GUI_Class
             // More code will be needed here to deal with restarting 
             // a game after the Reset button has been clicked. 
             //
+
+            
             // Leave this method with the single statement 
             // until you can play a game through to the finish square
             // and you want to implement the Reset button event handler.
@@ -319,16 +321,35 @@ namespace GUI_Class
         } //end UpdatePlayersGuiLocations
 
         private void rollButton_Click(object sender, EventArgs e)
-        {   
+        {
             //button enable bools change
             resetButton.Enabled = true;
             playersDataGridView.Enabled = false;
             playerNumDrop.Enabled = false;
+            exitButton.Enabled = false;
             //play one round and update the GUI
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
             SpaceRaceGame.PlayOneRound();
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
             UpdatesPlayersDataGridView();
+
+            string msg = "";
+            bool playersatfinish = false;
+            for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+            {
+                if (SpaceRaceGame.Players[i].AtFinish)
+                {
+                    playersatfinish = true;
+                    msg += SpaceRaceGame.names[i]+"\n\t";
+                }
+            }
+            if (playersatfinish)
+            {
+                rollButton.Enabled = false;
+                exitButton.Enabled = true;
+                //string todisplay = string.Join(",",finishedlist);
+                MessageBox.Show("The following player(s) finished the game\n\n\t" + msg);
+            }
         }
         
         private void resetButton_Click(object sender, EventArgs e)
@@ -337,6 +358,10 @@ namespace GUI_Class
             resetButton.Enabled = false;
             playersDataGridView.Enabled = true;
             playerNumDrop.Enabled = true;
+            rollButton.Enabled = false;
+            groupBox.Enabled = true;
+            stepNo.Checked = false;
+            stepYes.Checked = false;
             //set players and update GUI
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
             SpaceRaceGame.SetUpPlayers();
@@ -350,7 +375,8 @@ namespace GUI_Class
             resetButton.Enabled = false;
             exitButton.Enabled = true;
             playerNumDrop.Enabled = true;
-
+            rollButton.Enabled = false;
+            groupBox.Enabled = true;
         }
 
         private void playerNumDrop_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,7 +385,25 @@ namespace GUI_Class
             SpaceRaceGame.NumberOfPlayers = int.Parse(playerNumDrop.Text);
             SpaceRaceGame.SetUpPlayers();
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
-            //UpdatesPlayersDataGridView();
+            UpdatesPlayersDataGridView();
+        }
+
+        private void groupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stepYes_Click(object sender, EventArgs e)
+        {
+            groupBox.Enabled = false;
+            rollButton.Enabled = true;
+
+        }
+
+        private void stepNo_Click(object sender, EventArgs e)
+        {
+            groupBox.Enabled = false;
+            rollButton.Enabled = true;
         }
     }// end class
 }
