@@ -127,9 +127,9 @@ namespace GUI_Class
         private void SetupPlayersDataGridView()
         {
             // Stop the playersDataGridView from using all Player columns.
-            playersDataGridView.AutoGenerateColumns = false;
+            playerDataGridView.AutoGenerateColumns = false;
             // Tell the playersDataGridView what its real source of data is.
-            playersDataGridView.DataSource = SpaceRaceGame.Players;
+            playerDataGridView.DataSource = SpaceRaceGame.Players;
 
         }// end SetUpPlayersDataGridView
 
