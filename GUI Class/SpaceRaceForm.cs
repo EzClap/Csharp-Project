@@ -1,9 +1,9 @@
 ﻿using System;
-//  Uncomment  this using statement after you have remove the large Block Comment below 
+//  Un.comment  this using statement after you have remove the large Block Comment below 
 using System.Drawing;
 using System.Windows.Forms;
 using Game_Logic_Class;
-//  Uncomment  this using statement when you declare any object from Object Classes, eg Board,Square etc.
+//  Un.comment  this using statement when you declare any object from Object Classes, eg Board,Square etc.
 using Object_Classes;
 
 namespace GUI_Class
@@ -46,7 +46,7 @@ namespace GUI_Class
 
 
 
-        //  ******************* Uncomment - Remove Block Comment below
+        //  ******************* Un.comment - Remove Block Comment below
         //                         once you've added the TableLayoutPanel to your form.
         //
         //       You will have to replace "tableLayoutPanel" by whatever (Name) you used.
@@ -186,7 +186,7 @@ namespace GUI_Class
             int screenRow;
             int screenCol;
 
-            // Uncomment the following lines once you've added the tableLayoutPanel to your form. 
+            // Un.comment the following lines once you've added the tableLayoutPanel to your form. 
             //     and delete the "return null;" 
             //
             MapSquareNumToScreenRowAndColumn(squareNum, out screenRow, out screenCol);
@@ -222,7 +222,7 @@ namespace GUI_Class
         /// </summary>
         private void RefreshBoardTablePanelLayout()
         {
-            // Uncomment the following line once you've added the tableLayoutPanel to your form.
+            // Un.comment the following line once you've added the tableLayoutPanel to your form.
             tableLayoutPanel.Invalidate(true);
         }
 
