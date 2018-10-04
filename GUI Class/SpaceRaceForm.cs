@@ -29,7 +29,7 @@ namespace GUI_Class
             SetUpGUIGameBoard();
             SetupPlayersDataGridView();
             DetermineNumberOfPlayers();
-            // SpaceRaceGame.SetUpPlayers();
+            SpaceRaceGame.SetUpPlayers();
             // PrepareToPlayGame();
         }
 
