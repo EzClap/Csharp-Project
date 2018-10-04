@@ -24,9 +24,9 @@ namespace GUI_Class
         {
             InitializeComponent();
 
-            // Board.SetUpBoard();
-            // ResizeGUIGameBoard();
-            // SetUpGUIGameBoard();
+            Board.SetUpBoard();
+            ResizeGUIGameBoard();
+            SetUpGUIGameBoard();
             // SetUpPlayersDataGridView
             // DetermineNumberOfPlayers();
             // SpaceRaceGame.SetUpPlayers();
@@ -115,11 +115,14 @@ namespace GUI_Class
         private static void MapSquareNumToScreenRowAndColumn(int squareNum, out int screenRow, out int screenCol)
         {
             // Code needs to be added here to do the mapping
+            screenRow = 6 - squareNum / 8;
+            if (screenRow % 2 == 1) { screenCol = 7 - squareNum % 8; }
+            else { screenCol = squareNum % 8; }
 
             // Makes the compiler happy - these two lines below need to deleted 
             //    once mapping code is written above
-            screenRow = 0;
-            screenCol = 0;
+            //screenRow = 0;
+            //screenCol = 0;
 
         }//end MapSquareNumToScreenRowAndColumn
 
