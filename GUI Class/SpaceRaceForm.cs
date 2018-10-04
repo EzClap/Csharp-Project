@@ -266,5 +266,9 @@ namespace GUI_Class
             RefreshBoardTablePanelLayout();//must be the last line in this method. Do not put inside above loop.
         } //end UpdatePlayersGuiLocations
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }// end class
 }

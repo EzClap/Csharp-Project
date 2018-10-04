@@ -34,3 +34,15 @@ C:\Users\under\Git repo\cantbegoogled\Space Race\obj\Debug\Space Race.pdb
 C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Game Logic Class.dll
 C:\Users\under\Git repo\cantbegoogled\Space Race\bin\Debug\Game Logic Class.pdb
 C:\Users\under\Git repo\cantbegoogled\Space Race\obj\Debug\Console Class.csprojAssemblyReference.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\bin\Debug\Space Race.exe.config
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\bin\Debug\Space Race.exe
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\bin\Debug\Space Race.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\bin\Debug\Game Logic Class.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\bin\Debug\Object Classes.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\bin\Debug\Game Logic Class.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\bin\Debug\Object Classes.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\obj\Debug\Console Class.csprojAssemblyReference.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\obj\Debug\Console Class.csproj.CoreCompileInputs.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\obj\Debug\Console Class.csproj.CopyComplete
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\obj\Debug\Space Race.exe
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Space Race\obj\Debug\Space Race.pdb

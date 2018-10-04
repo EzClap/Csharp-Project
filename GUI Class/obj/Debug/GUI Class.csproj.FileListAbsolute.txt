@@ -38,3 +38,18 @@ C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.csproj.CoreC
 C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.csproj.CopyComplete
 C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.exe
 C:\Users\under\Git repo\cantbegoogled\GUI Class\obj\Debug\GUI Class.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\bin\Debug\GUI Class.exe.config
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\bin\Debug\GUI Class.exe
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\bin\Debug\GUI Class.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\bin\Debug\Game Logic Class.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\bin\Debug\Object Classes.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\bin\Debug\Game Logic Class.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\bin\Debug\Object Classes.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\obj\Debug\GUI Class.csprojAssemblyReference.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\obj\Debug\GUI_Class.SpaceRaceForm.resources
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\obj\Debug\GUI_Class.Properties.Resources.resources
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\obj\Debug\GUI Class.csproj.GenerateResource.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\obj\Debug\GUI Class.csproj.CoreCompileInputs.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\obj\Debug\GUI Class.csproj.CopyComplete
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\obj\Debug\GUI Class.exe
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\GUI Class\obj\Debug\GUI Class.pdb

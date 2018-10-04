@@ -16,3 +16,12 @@ C:\Users\under\Git repo\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Clas
 C:\Users\under\Git repo\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.dll
 C:\Users\under\Git repo\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.pdb
 C:\Users\under\Git repo\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.csprojAssemblyReference.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\bin\Debug\Game Logic Class.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\bin\Debug\Game Logic Class.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\bin\Debug\Object Classes.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\bin\Debug\Object Classes.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.csprojAssemblyReference.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.csproj.CoreCompileInputs.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.csproj.CopyComplete
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Game Logic Class\obj\Debug\Game Logic Class.pdb
