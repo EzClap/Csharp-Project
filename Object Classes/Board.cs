@@ -106,7 +106,7 @@ namespace Object_Classes {
                     if (i == wormHoles[j, 0])
                     {
                         FindDestSquare(wormHoles, i, out int destNum, out int amount);
-                        squares[i] = new WormholeSquare(i.ToString(), i, destNum, amount);
+                        squares[i] = new WormholeSquare("square " + i, i, destNum, amount);
                         assigned = true;
                     }
                 }
@@ -116,14 +116,14 @@ namespace Object_Classes {
                     if (i == blackHoles[j, 0])
                     {
                         FindDestSquare(blackHoles, i, out int destNum, out int amount);
-                        squares[i] = new BlackholeSquare(i.ToString(), i, destNum, amount);
+                        squares[i] = new BlackholeSquare("square " + i, i, destNum, amount);
                         assigned = true;
                     }
                 }
 
                 if (!assigned)
                 {
-                    squares[i] = new Square(i.ToString(), i);
+                    squares[i] = new Square("square " + i, i);
                 }
             }
 
