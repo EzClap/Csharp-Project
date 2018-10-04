@@ -10,3 +10,9 @@ C:\Users\under\Git repo\cantbegoogled\Object Classes\obj\Debug\Object Classes.pd
 C:\Users\under\Git repo\cantbegoogled\Object Classes\bin\Debug\Object Classes.dll
 C:\Users\under\Git repo\cantbegoogled\Object Classes\bin\Debug\Object Classes.pdb
 C:\Users\under\Git repo\cantbegoogled\Object Classes\obj\Debug\Object Classes.csprojAssemblyReference.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Object Classes\bin\Debug\Object Classes.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Object Classes\bin\Debug\Object Classes.pdb
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Object Classes\obj\Debug\Object Classes.csprojAssemblyReference.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Object Classes\obj\Debug\Object Classes.csproj.CoreCompileInputs.cache
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Object Classes\obj\Debug\Object Classes.dll
+D:\Users\rymanj\Documents\GitHub\cantbegoogled\Object Classes\obj\Debug\Object Classes.pdb
