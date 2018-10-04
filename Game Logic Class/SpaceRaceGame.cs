@@ -83,7 +83,6 @@ namespace Game_Logic_Class
                 players[i].Position = Board.StartSquare.Number;
                 players[i].HasPower = true;
                 players[i].Location = Board.StartSquare;
-                players[i].PlayerTokenColour = playerTokenColours[i];
             }   
         }
 
