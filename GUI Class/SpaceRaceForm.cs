@@ -30,7 +30,7 @@ namespace GUI_Class
             SetupPlayersDataGridView();
             DetermineNumberOfPlayers();
             SpaceRaceGame.SetUpPlayers();
-            // PrepareToPlayGame();
+            PrepareToPlay();
         }
 
 
@@ -268,15 +268,44 @@ namespace GUI_Class
             //          the ContainsPlayers array of the SquareControl object.
             for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
             {
-                int squareNum = GetSquareNumberOfPlayer(i);
-                SquareControl square = tableLayoutPanel.Controls[squareNum] as SquareControl;
-                
+                SquareControl square = SquareControlAt(SpaceRaceGame.Players[i].Location.Number);
+                if (typeOfGuiUpdate == TypeOfGuiUpdate.AddPlayer) { square.ContainsPlayers[i] = true; }
+                else { square.ContainsPlayers[i] = false; }
             }
 
             RefreshBoardTablePanelLayout();//must be the last line in this method. Do not put inside above loop.
         } //end UpdatePlayersGuiLocations
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rollDiceButton_Click_1(object sender, EventArgs e)
+        {
+            // Start Round
+            //  disable reset button
+            //  disable exit button
+
+            // Round Calculations
+            bool singleStep = true;
+            if (singleStep)
+            {
+                UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+                SpaceRaceGame.PlayOneRound();
+                UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+                UpdatesPlayersDataGridView();
+            }
+            
+            else
+            {
+
+            }
+
+            // End Round
+        }
+
+        private void ToggleEnabledObjects(int option)
         {
 
         }

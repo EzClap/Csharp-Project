@@ -37,16 +37,16 @@
             this.rollDiceButton = new System.Windows.Forms.Button();
             this.gameResetButton = new System.Windows.Forms.Button();
             this.playerDataGridView = new System.Windows.Forms.DataGridView();
+            this.playerTokenImageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rocketFuelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.playersComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
-            this.playerTokenImageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rocketFuelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -151,6 +151,7 @@
             this.rollDiceButton.TabIndex = 7;
             this.rollDiceButton.Text = "Roll Dice";
             this.rollDiceButton.UseVisualStyleBackColor = true;
+            this.rollDiceButton.Click += new System.EventHandler(this.rollDiceButton_Click_1);
             // 
             // gameResetButton
             // 
@@ -178,6 +179,38 @@
             this.playerDataGridView.RowHeadersVisible = false;
             this.playerDataGridView.Size = new System.Drawing.Size(201, 150);
             this.playerDataGridView.TabIndex = 5;
+            // 
+            // playerTokenImageDataGridViewImageColumn
+            // 
+            this.playerTokenImageDataGridViewImageColumn.DataPropertyName = "PlayerTokenImage";
+            this.playerTokenImageDataGridViewImageColumn.HeaderText = "";
+            this.playerTokenImageDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.playerTokenImageDataGridViewImageColumn.Name = "playerTokenImageDataGridViewImageColumn";
+            this.playerTokenImageDataGridViewImageColumn.ReadOnly = true;
+            this.playerTokenImageDataGridViewImageColumn.Width = 20;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // positionDataGridViewTextBoxColumn
+            // 
+            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
+            this.positionDataGridViewTextBoxColumn.HeaderText = "Square";
+            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
+            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.positionDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // rocketFuelDataGridViewTextBoxColumn
+            // 
+            this.rocketFuelDataGridViewTextBoxColumn.DataPropertyName = "RocketFuel";
+            this.rocketFuelDataGridViewTextBoxColumn.HeaderText = "Fuel";
+            this.rocketFuelDataGridViewTextBoxColumn.Name = "rocketFuelDataGridViewTextBoxColumn";
+            this.rocketFuelDataGridViewTextBoxColumn.ReadOnly = true;
+            this.rocketFuelDataGridViewTextBoxColumn.Width = 50;
             // 
             // playerBindingSource
             // 
@@ -240,38 +273,6 @@
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            // 
-            // playerTokenImageDataGridViewImageColumn
-            // 
-            this.playerTokenImageDataGridViewImageColumn.DataPropertyName = "PlayerTokenImage";
-            this.playerTokenImageDataGridViewImageColumn.HeaderText = "";
-            this.playerTokenImageDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.playerTokenImageDataGridViewImageColumn.Name = "playerTokenImageDataGridViewImageColumn";
-            this.playerTokenImageDataGridViewImageColumn.ReadOnly = true;
-            this.playerTokenImageDataGridViewImageColumn.Width = 20;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // positionDataGridViewTextBoxColumn
-            // 
-            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
-            this.positionDataGridViewTextBoxColumn.HeaderText = "Square";
-            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
-            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.positionDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // rocketFuelDataGridViewTextBoxColumn
-            // 
-            this.rocketFuelDataGridViewTextBoxColumn.DataPropertyName = "RocketFuel";
-            this.rocketFuelDataGridViewTextBoxColumn.HeaderText = "Fuel";
-            this.rocketFuelDataGridViewTextBoxColumn.Name = "rocketFuelDataGridViewTextBoxColumn";
-            this.rocketFuelDataGridViewTextBoxColumn.ReadOnly = true;
-            this.rocketFuelDataGridViewTextBoxColumn.Width = 50;
             // 
             // SpaceRaceForm
             // 
