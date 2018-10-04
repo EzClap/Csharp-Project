@@ -113,8 +113,7 @@ namespace GUI_Class
                     int xPixels = xPosition * (PLAYER_TOKEN_SIZE + PLAYER_TOKEN_SPACING);
                     int yPixels = yPosition * (PLAYER_TOKEN_SIZE + PLAYER_TOKEN_SPACING);
                     Brush playerTokenColour = players[i].PlayerTokenColour;                                  //UNCOMMENT :Remove  line comments on this and next line whne instructed to do so in Part B specs
-                    //e.Graphics.FillEllipse(playerTokenColour, xPixels, yPixels, PLAYER_TOKEN_SIZE, PLAYER_TOKEN_SIZE);
-                    e.Graphics.FillEllipse(Brushes.Azure, xPixels, yPixels, PLAYER_TOKEN_SIZE, PLAYER_TOKEN_SIZE);
+                    e.Graphics.FillEllipse(playerTokenColour, xPixels, yPixels, PLAYER_TOKEN_SIZE, PLAYER_TOKEN_SIZE);
                 }
             }//endfor
         }

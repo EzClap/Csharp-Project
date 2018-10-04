@@ -36,24 +36,24 @@
             this.noRadioButton = new System.Windows.Forms.RadioButton();
             this.rollDiceButton = new System.Windows.Forms.Button();
             this.gameResetButton = new System.Windows.Forms.Button();
-            this.playerDataGridView = new System.Windows.Forms.DataGridView();
-            this.playerTokenImageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rocketFuelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.playersComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
+            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.rocketFuelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playerTokenImageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.playerDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.playerDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -161,61 +161,6 @@
             this.gameResetButton.Text = "Game Reset";
             this.gameResetButton.UseVisualStyleBackColor = true;
             // 
-            // playerDataGridView
-            // 
-            this.playerDataGridView.AllowUserToAddRows = false;
-            this.playerDataGridView.AllowUserToDeleteRows = false;
-            this.playerDataGridView.AutoGenerateColumns = false;
-            this.playerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.playerDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.playerTokenImageDataGridViewImageColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.positionDataGridViewTextBoxColumn,
-            this.rocketFuelDataGridViewTextBoxColumn});
-            this.playerDataGridView.DataSource = this.playerBindingSource;
-            this.playerDataGridView.EnableHeadersVisualStyles = false;
-            this.playerDataGridView.Location = new System.Drawing.Point(3, 160);
-            this.playerDataGridView.Name = "playerDataGridView";
-            this.playerDataGridView.RowHeadersVisible = false;
-            this.playerDataGridView.Size = new System.Drawing.Size(210, 150);
-            this.playerDataGridView.TabIndex = 5;
-            this.playerDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.playerDataGridView_CellContentClick);
-            // 
-            // playerTokenImageDataGridViewImageColumn
-            // 
-            this.playerTokenImageDataGridViewImageColumn.DataPropertyName = "PlayerTokenImage";
-            this.playerTokenImageDataGridViewImageColumn.HeaderText = "";
-            this.playerTokenImageDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.playerTokenImageDataGridViewImageColumn.Name = "playerTokenImageDataGridViewImageColumn";
-            this.playerTokenImageDataGridViewImageColumn.ReadOnly = true;
-            this.playerTokenImageDataGridViewImageColumn.Width = 20;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // positionDataGridViewTextBoxColumn
-            // 
-            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
-            this.positionDataGridViewTextBoxColumn.HeaderText = "Square";
-            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
-            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.positionDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // rocketFuelDataGridViewTextBoxColumn
-            // 
-            this.rocketFuelDataGridViewTextBoxColumn.DataPropertyName = "RocketFuel";
-            this.rocketFuelDataGridViewTextBoxColumn.HeaderText = "Fuel";
-            this.rocketFuelDataGridViewTextBoxColumn.Name = "rocketFuelDataGridViewTextBoxColumn";
-            this.rocketFuelDataGridViewTextBoxColumn.ReadOnly = true;
-            this.rocketFuelDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // playerBindingSource
-            // 
-            this.playerBindingSource.DataSource = typeof(Object_Classes.Player);
-            // 
             // playersComboBox
             // 
             this.playersComboBox.Cursor = System.Windows.Forms.Cursors.Default;
@@ -274,6 +219,61 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // playerBindingSource
+            // 
+            this.playerBindingSource.DataSource = typeof(Object_Classes.Player);
+            // 
+            // rocketFuelDataGridViewTextBoxColumn
+            // 
+            this.rocketFuelDataGridViewTextBoxColumn.DataPropertyName = "RocketFuel";
+            this.rocketFuelDataGridViewTextBoxColumn.HeaderText = "Fuel";
+            this.rocketFuelDataGridViewTextBoxColumn.Name = "rocketFuelDataGridViewTextBoxColumn";
+            this.rocketFuelDataGridViewTextBoxColumn.ReadOnly = true;
+            this.rocketFuelDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // positionDataGridViewTextBoxColumn
+            // 
+            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
+            this.positionDataGridViewTextBoxColumn.HeaderText = "Square";
+            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
+            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.positionDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // playerTokenImageDataGridViewImageColumn
+            // 
+            this.playerTokenImageDataGridViewImageColumn.DataPropertyName = "PlayerTokenImage";
+            this.playerTokenImageDataGridViewImageColumn.HeaderText = "";
+            this.playerTokenImageDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.playerTokenImageDataGridViewImageColumn.Name = "playerTokenImageDataGridViewImageColumn";
+            this.playerTokenImageDataGridViewImageColumn.ReadOnly = true;
+            this.playerTokenImageDataGridViewImageColumn.Width = 20;
+            // 
+            // playerDataGridView
+            // 
+            this.playerDataGridView.AllowUserToAddRows = false;
+            this.playerDataGridView.AllowUserToDeleteRows = false;
+            this.playerDataGridView.AutoGenerateColumns = false;
+            this.playerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.playerDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.playerTokenImageDataGridViewImageColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.positionDataGridViewTextBoxColumn,
+            this.rocketFuelDataGridViewTextBoxColumn});
+            this.playerDataGridView.DataSource = this.playerBindingSource;
+            this.playerDataGridView.EnableHeadersVisualStyles = false;
+            this.playerDataGridView.Location = new System.Drawing.Point(3, 160);
+            this.playerDataGridView.Name = "playerDataGridView";
+            this.playerDataGridView.RowHeadersVisible = false;
+            this.playerDataGridView.Size = new System.Drawing.Size(210, 150);
+            this.playerDataGridView.TabIndex = 5;
+            this.playerDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.playerDataGridView_CellContentClick);
+            // 
             // SpaceRaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,8 +290,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.playerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
