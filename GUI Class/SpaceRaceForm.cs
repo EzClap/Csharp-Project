@@ -1,10 +1,19 @@
 ﻿using System;
+<<<<<<< HEAD
 //  Un.comment  this using statement after you have remove the large Block Comment below 
 using System.Drawing;
 using System.Windows.Forms;
 using Game_Logic_Class;
 //  Un.comment  this using statement when you declare any object from Object Classes, eg Board,Square etc.
 using Object_Classes;
+=======
+//  Uncomment  this using statement after you have remove the large Block Comment below 
+//using System.Drawing;
+using System.Windows.Forms;
+using Game_Logic_Class;
+//  Uncomment  this using statement when you declare any object from Object Classes, eg Board,Square etc.
+//using Object_Classes;
+>>>>>>> parent of e4e6008... adding controls
 
 namespace GUI_Class
 {
@@ -54,7 +63,7 @@ namespace GUI_Class
         //        Likewise with "playerDataGridView" by your DataGridView (Name)
         //  ******************************************************************************************
 
-
+/*
         /// <summary>
         /// Resizes the entire form, so that the individual squares have their correct size, 
         /// as specified by SquareControl.SQUARE_SIZE.  
@@ -135,7 +144,7 @@ namespace GUI_Class
             playerDataGridView.DataSource = SpaceRaceGame.Players;
 
         }// end SetUpPlayersDataGridView
-
+*/
 
 
         /// <summary>
@@ -148,13 +157,10 @@ namespace GUI_Class
         private void DetermineNumberOfPlayers()
         {
             // Store the SelectedItem property of the ComboBox in a string
-            string strNumPlayers = playersComboBox.SelectedItem.ToString();
 
             // Parse string to a number
-            int numPlayers = int.Parse(strNumPlayers);
 
             // Set the NumberOfPlayers in the SpaceRaceGame class to that number
-            SpaceRaceGame.NumberOfPlayers = numPlayers;
 
         }//end DetermineNumberOfPlayers
         
@@ -192,8 +198,10 @@ namespace GUI_Class
             // Un.comment the following lines once you've added the tableLayoutPanel to your form. 
             //     and delete the "return null;" 
             //
-            MapSquareNumToScreenRowAndColumn(squareNum, out screenRow, out screenCol);
-            return (SquareControl)tableLayoutPanel.GetControlFromPosition(screenCol, screenRow);
+            // MapSquareNumToScreenRowAndColumn(squareNum, out screenRow, out screenCol);
+            // return (SquareControl)tableLayoutPanel.GetControlFromPosition(screenCol, screenRow);
+
+            return null; //added so code compiles
         }
 
 
@@ -207,11 +215,17 @@ namespace GUI_Class
         private int GetSquareNumberOfPlayer(int playerNumber)
         {
             // Code needs to be added here.
+<<<<<<< HEAD
             int playerLocation = SpaceRaceGame.Players[playerNumber].Location.Number;
             return playerLocation;
 
             //     delete the "return -1;" once body of method has been written 
             // return -1;
+=======
+
+            //     delete the "return -1;" once body of method has been written 
+            return -1;
+>>>>>>> parent of e4e6008... adding controls
         }//end GetSquareNumberOfPlayer
 
 
@@ -226,8 +240,13 @@ namespace GUI_Class
         /// </summary>
         private void RefreshBoardTablePanelLayout()
         {
+<<<<<<< HEAD
             // Un.comment the following line once you've added the tableLayoutPanel to your form.
             tableLayoutPanel.Invalidate(true);
+=======
+            // Uncomment the following line once you've added the tableLayoutPanel to your form.
+            //      tableLayoutPanel.Invalidate(true);
+>>>>>>> parent of e4e6008... adding controls
         }
 
         /// <summary>
@@ -267,12 +286,16 @@ namespace GUI_Class
             //       retrieve the SquareControl object with that square number
             //       using the typeOfGuiUpdate, update the appropriate element of 
             //          the ContainsPlayers array of the SquareControl object.
+<<<<<<< HEAD
             for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
             {
                 SquareControl square = SquareControlAt(SpaceRaceGame.Players[i].Location.Number);
                 if (typeOfGuiUpdate == TypeOfGuiUpdate.AddPlayer) { square.ContainsPlayers[i] = true; }
                 else { square.ContainsPlayers[i] = false; }
             }
+=======
+            //          
+>>>>>>> parent of e4e6008... adding controls
 
             RefreshBoardTablePanelLayout();//must be the last line in this method. Do not put inside above loop.
         } //end UpdatePlayersGuiLocations
