@@ -156,7 +156,7 @@ namespace Space_Race
             return playAgain;
         }
 
-        private static void TestPlayers(out bool playersAtFinish, out bool playersLostPower)
+        public static void TestPlayers(out bool playersAtFinish, out bool playersLostPower)
         {
             playersAtFinish = false;
             playersLostPower = false;
