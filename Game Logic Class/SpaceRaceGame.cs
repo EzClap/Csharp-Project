@@ -84,7 +84,11 @@ namespace Game_Logic_Class
                 players[i].HasPower = true;
                 players[i].Location = Board.StartSquare;
                 players[i].PlayerTokenColour = playerTokenColours[i];
-            }   
+
+                // debug
+                //players[i].RocketFuel = 2;
+                //players[i].Position = Board.Squares[Board.FINISH_SQUARE_NUMBER - 1].Number; players[i].Location = Board.Squares[Board.FINISH_SQUARE_NUMBER - 1];
+            }
         }
 
         /// <summary>
