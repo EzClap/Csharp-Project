@@ -351,7 +351,7 @@ namespace GUI_Class
             }
         }
 
-        enum GameStatus { StartGame, EndGame, FirstRound };
+        enum GameStatus { StartGame, EndGame, FirstRound, RadioSelection };
         private void ToggleEnabledObjects(GameStatus option)
         {
             switch (option)
@@ -373,6 +373,10 @@ namespace GUI_Class
                 case GameStatus.FirstRound:
                     playerDataGridView.Enabled = false;
                     playersComboBox.Enabled = false;
+                    break;
+
+                case GameStatus.RadioSelection:
+                    rollDiceButton.Enabled = true;
                     groupBox1.Enabled = false;
                     break;
             }
@@ -406,13 +410,13 @@ namespace GUI_Class
         private void yesRadioButton_Click(object sender, EventArgs e)
         {
             singleStep = true;
-            rollDiceButton.Enabled = true;
+            ToggleEnabledObjects(GameStatus.RadioSelection);
         }
 
         private void noRadioButton_Click(object sender, EventArgs e)
         {
             singleStep = false;
-            rollDiceButton.Enabled = true;
+            ToggleEnabledObjects(GameStatus.RadioSelection);
         }
     }// end class
 }
