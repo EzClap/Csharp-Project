@@ -145,6 +145,7 @@
             // 
             // rollDiceButton
             // 
+            this.rollDiceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rollDiceButton.Location = new System.Drawing.Point(80, 596);
             this.rollDiceButton.Name = "rollDiceButton";
             this.rollDiceButton.Size = new System.Drawing.Size(75, 23);
@@ -155,6 +156,7 @@
             // 
             // gameResetButton
             // 
+            this.gameResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gameResetButton.Location = new System.Drawing.Point(28, 626);
             this.gameResetButton.Name = "gameResetButton";
             this.gameResetButton.Size = new System.Drawing.Size(75, 23);
@@ -177,7 +179,7 @@
             this.playerDataGridView.Location = new System.Drawing.Point(12, 160);
             this.playerDataGridView.Name = "playerDataGridView";
             this.playerDataGridView.RowHeadersVisible = false;
-            this.playerDataGridView.Size = new System.Drawing.Size(201, 150);
+            this.playerDataGridView.Size = new System.Drawing.Size(201, 176);
             this.playerDataGridView.TabIndex = 5;
             // 
             // playerTokenImageDataGridViewImageColumn
@@ -231,6 +233,7 @@
             this.playersComboBox.Size = new System.Drawing.Size(35, 21);
             this.playersComboBox.TabIndex = 4;
             this.playersComboBox.Text = "6";
+            this.playersComboBox.SelectedIndexChanged += new System.EventHandler(this.playersComboBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -265,6 +268,7 @@
             // 
             // exitButton
             // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.Location = new System.Drawing.Point(119, 626);
             this.exitButton.Name = "exitButton";
