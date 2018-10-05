@@ -115,8 +115,8 @@ namespace Space_Race
         private static void FinishGame()
         {
             SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
-            if (playersLostPower) { Console.WriteLine("\n\tAll players lost power!"); }
-            else { Console.WriteLine("\n\tThe following player(s) finished the game"); }
+            if (playersAtFinish) { Console.WriteLine("\n\tThe following player(s) finished the game"); }
+            else { Console.WriteLine("\n\tAll players lost power!"); }
 
             for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
             {
