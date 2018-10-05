@@ -400,6 +400,7 @@ namespace GUI_Class
             // Start game logic
             firstRound = true;
             ToggleEnabledObjects(GameStatus.StartGame);
+            playersComboBox.SelectedItem = "6";
             yesRadioButton.Checked = false;
             noRadioButton.Checked = false;
         }
