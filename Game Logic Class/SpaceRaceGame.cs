@@ -106,15 +106,15 @@ namespace Game_Logic_Class
         {
             playersAtFinish = false;
             playersLostPower = false;
-            int playersHasPower = 0;
+            int playersHasPower = NumberOfPlayers;
 
             for (int i = 0; i < NumberOfPlayers; i++)
             {
                 if (Players[i].AtFinish) { playersAtFinish = true; }
-                if (!Players[i].HasPower) { playersHasPower++; }
+                if (!Players[i].HasPower) { playersHasPower--; }
             }
 
-            if (playersHasPower == NumberOfPlayers) { playersLostPower = true; }
+            if (playersHasPower == 0) { playersLostPower = true; }
         }
     }//end SnakesAndLadders
 }
