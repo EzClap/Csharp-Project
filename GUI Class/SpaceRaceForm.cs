@@ -277,15 +277,16 @@ namespace GUI_Class
 
             RefreshBoardTablePanelLayout();//must be the last line in this method. Do not put inside above loop.
         } //end UpdatePlayersGuiLocations
-
+        
         bool singleStep;
+        int currentPlayer;
+        private static Die die1 = new Die(), die2 = new Die();
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            if (singleStep)
+            if (!singleStep)
             {
-                // Start Round Toggled Objects
+                // First Round Toggled Objects
                 if (firstRound) { ToggleEnabledObjects(GameStatus.FirstRound); firstRound = false; }
-                ToggleEnabledObjects(GameStatus.StartRound);
 
                 // Commence Round
                 UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
@@ -293,52 +294,46 @@ namespace GUI_Class
                 UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
                 UpdatesPlayersDataGridView();
 
-                // End Round Toggles Objects
-                ToggleEnabledObjects(GameStatus.EndRound);
-
                 // Test Players
-                if (GameOver())
-                {
-                    // Toggle Objects
-                    ToggleEnabledObjects(GameStatus.EndGame);
-
-                    // Game Results
-                    string message = "";
-                    if (playersAtFinish)
-                    {
-                        for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
-                        { if (SpaceRaceGame.Players[i].AtFinish) { message += "\n\t" + SpaceRaceGame.Players[i].Name; } }
-                        MessageBox.Show("The following player(s) finished the game\n" + message);
-                    }
-                    else
-                    {
-                        MessageBox.Show("All players lost power!");
-                    }
-                }
+                TestGameOver();
             }
             
             else
             {
-                // Start Round Toggled Objects
-                if (firstRound) { ToggleEnabledObjects(GameStatus.FirstRound); firstRound = false; }
-                ToggleEnabledObjects(GameStatus.StartRound);
-
-                // Commence Game
-                UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
-
-                // Game Calculations
-                bool gameOver = GameOver();
-                while (!gameOver)
+                // First Round Logic
+                if (firstRound)
                 {
-                    SpaceRaceGame.PlayOneRound();
-                    gameOver = GameOver();
+                    ToggleEnabledObjects(GameStatus.FirstRound);
+                    currentPlayer = 0;
+                    firstRound = false;
+                }
+                
+                // Play for currentPlayer
+                if (currentPlayer <= SpaceRaceGame.NumberOfPlayers)
+                {
+                    UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+                    SpaceRaceGame.Players[currentPlayer].Play(die1, die2);
+                    UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+                    UpdatesPlayersDataGridView();
                 }
 
-                UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
-                UpdatesPlayersDataGridView();
+                // Update currentPlayer
+                currentPlayer++;
+                currentPlayer %= 6;
 
-                // End Game Toggles Objects
-                ToggleEnabledObjects(GameStatus.EndRound);
+                // Test Game Over
+                TestGameOver();
+            }
+        }
+
+        private void TestGameOver()
+        {
+            SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
+            bool gameOver = playersAtFinish | playersLostPower;
+
+            if (gameOver)
+            {
+                // Toggle Objects
                 ToggleEnabledObjects(GameStatus.EndGame);
 
                 // Game Results
@@ -356,43 +351,26 @@ namespace GUI_Class
             }
         }
 
-        private bool playersAtFinish;
-        private bool GameOver()
-        {
-            SpaceRaceGame.TestPlayers(out bool PlayersAtFinish, out bool playersLostPower);
-            playersAtFinish = PlayersAtFinish;
-            return playersAtFinish | playersLostPower;
-        }
-
-        enum GameStatus { StartRound, EndRound, StartGame, EndGame, FirstRound };
+        enum GameStatus { StartGame, EndGame, FirstRound };
         private void ToggleEnabledObjects(GameStatus option)
         {
             switch (option)
             {
-                case GameStatus.StartRound: // need to disable reset, exit, rollDice
-                    gameResetButton.Enabled = false;
-                    rollDiceButton.Enabled = false;
-                    break;
-
-                case GameStatus.EndRound: // need to enable reset, exit, rollDice
-                    gameResetButton.Enabled = true;
-                    rollDiceButton.Enabled = true;
-                    break;
-
-                case GameStatus.StartGame: // need to disable reset button // need to enable playerDataGridView, rollDice, ComboBox
-                    gameResetButton.Enabled = false;
+                case GameStatus.StartGame:
                     playerDataGridView.Enabled = true;
                     rollDiceButton.Enabled = true;
                     playersComboBox.Enabled = true;
                     groupBox1.Enabled = true;
+                    gameResetButton.Enabled = false;
                     rollDiceButton.Enabled = false;
                     break;
 
-                case GameStatus.EndGame: // need to disable rollDice
+                case GameStatus.EndGame:
+                    gameResetButton.Enabled = true;
                     rollDiceButton.Enabled = false;
                     break;
 
-                case GameStatus.FirstRound: // need to disable playerDataGridView, ComboBox
+                case GameStatus.FirstRound:
                     playerDataGridView.Enabled = false;
                     playersComboBox.Enabled = false;
                     groupBox1.Enabled = false;
