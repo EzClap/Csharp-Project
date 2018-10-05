@@ -98,5 +98,19 @@ namespace Game_Logic_Class
             }
         }
 
+        public static void TestPlayers(out bool playersAtFinish, out bool playersLostPower)
+        {
+            playersAtFinish = false;
+            playersLostPower = false;
+            int playersHasPower = 0;
+
+            for (int i = 0; i < NumberOfPlayers; i++)
+            {
+                if (Players[i].AtFinish) { playersAtFinish = true; }
+                if (!Players[i].HasPower) { playersHasPower++; }
+            }
+
+            if (playersHasPower == NumberOfPlayers) { playersLostPower = true; }
+        }
     }//end SnakesAndLadders
 }

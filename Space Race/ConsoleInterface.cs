@@ -94,7 +94,7 @@ namespace Space_Race
 
                 SpaceRaceGame.PlayOneRound();
 
-                TestPlayers(out bool playersAtFinish, out bool playersLostPower);
+                SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
                 if (playersAtFinish || playersLostPower) { gameFinished = true; }
 
                 for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
@@ -114,7 +114,7 @@ namespace Space_Race
 
         private static void FinishGame()
         {
-            TestPlayers(out bool playersAtFinish, out bool playersLostPower);
+            SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
             if (playersLostPower) { Console.WriteLine("\n\tAll players lost power!"); }
             else { Console.WriteLine("\n\tThe following player(s) finished the game"); }
 
@@ -156,20 +156,20 @@ namespace Space_Race
             return playAgain;
         }
 
-        public static void TestPlayers(out bool playersAtFinish, out bool playersLostPower)
-        {
-            playersAtFinish = false;
-            playersLostPower = false;
-            int playersHasPower = 0;
+        //private static void TestPlayers(out bool playersAtFinish, out bool playersLostPower)
+        //{
+        //    playersAtFinish = false;
+        //    playersLostPower = false;
+        //    int playersHasPower = 0;
 
-            for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
-            {
-                if (SpaceRaceGame.Players[i].AtFinish) { playersAtFinish = true; }
-                if (!SpaceRaceGame.Players[i].HasPower) { playersHasPower++; }
-            }
+        //    for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+        //    {
+        //        if (SpaceRaceGame.Players[i].AtFinish) { playersAtFinish = true; }
+        //        if (!SpaceRaceGame.Players[i].HasPower) { playersHasPower++; }
+        //    }
 
-            if (playersHasPower == SpaceRaceGame.NumberOfPlayers) { playersLostPower = true; }
-        }
+        //    if (playersHasPower == SpaceRaceGame.NumberOfPlayers) { playersLostPower = true; }
+        //}
 
     }//end Console class
 }
