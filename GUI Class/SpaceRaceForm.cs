@@ -278,9 +278,9 @@ namespace GUI_Class
             RefreshBoardTablePanelLayout();//must be the last line in this method. Do not put inside above loop.
         } //end UpdatePlayersGuiLocations
 
+        bool singleStep;
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            bool singleStep = true;
             if (singleStep)
             {
                 // Start Round Toggled Objects
@@ -297,9 +297,7 @@ namespace GUI_Class
                 ToggleEnabledObjects(GameStatus.EndRound);
 
                 // Test Players
-                SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
-                bool gameOver = playersAtFinish | playersLostPower;
-                if (gameOver)
+                if (GameOver())
                 {
                     // Toggle Objects
                     ToggleEnabledObjects(GameStatus.EndGame);
@@ -321,10 +319,49 @@ namespace GUI_Class
             
             else
             {
+                // Start Round Toggled Objects
+                if (firstRound) { ToggleEnabledObjects(GameStatus.FirstRound); firstRound = false; }
+                ToggleEnabledObjects(GameStatus.StartRound);
 
+                // Commence Game
+                UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+
+                // Game Calculations
+                bool gameOver = GameOver();
+                while (!gameOver)
+                {
+                    SpaceRaceGame.PlayOneRound();
+                    gameOver = GameOver();
+                }
+
+                UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+                UpdatesPlayersDataGridView();
+
+                // End Game Toggles Objects
+                ToggleEnabledObjects(GameStatus.EndRound);
+                ToggleEnabledObjects(GameStatus.EndGame);
+
+                // Game Results
+                string message = "";
+                if (playersAtFinish)
+                {
+                    for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+                    { if (SpaceRaceGame.Players[i].AtFinish) { message += "\n\t" + SpaceRaceGame.Players[i].Name; } }
+                    MessageBox.Show("The following player(s) finished the game\n" + message);
+                }
+                else
+                {
+                    MessageBox.Show("All players lost power!");
+                }
             }
+        }
 
-            // End Round
+        private bool playersAtFinish;
+        private bool GameOver()
+        {
+            SpaceRaceGame.TestPlayers(out bool PlayersAtFinish, out bool playersLostPower);
+            playersAtFinish = PlayersAtFinish;
+            return playersAtFinish | playersLostPower;
         }
 
         enum GameStatus { StartRound, EndRound, StartGame, EndGame, FirstRound };
@@ -334,13 +371,11 @@ namespace GUI_Class
             {
                 case GameStatus.StartRound: // need to disable reset, exit, rollDice
                     gameResetButton.Enabled = false;
-                    exitButton.Enabled = false;
                     rollDiceButton.Enabled = false;
                     break;
 
                 case GameStatus.EndRound: // need to enable reset, exit, rollDice
                     gameResetButton.Enabled = true;
-                    exitButton.Enabled = true;
                     rollDiceButton.Enabled = true;
                     break;
 
@@ -349,6 +384,8 @@ namespace GUI_Class
                     playerDataGridView.Enabled = true;
                     rollDiceButton.Enabled = true;
                     playersComboBox.Enabled = true;
+                    groupBox1.Enabled = true;
+                    rollDiceButton.Enabled = false;
                     break;
 
                 case GameStatus.EndGame: // need to disable rollDice
@@ -358,40 +395,68 @@ namespace GUI_Class
                 case GameStatus.FirstRound: // need to disable playerDataGridView, ComboBox
                     playerDataGridView.Enabled = false;
                     playersComboBox.Enabled = false;
+                    groupBox1.Enabled = false;
                     break;
             }
         }
 
         private void playersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // lock playerDataGridView
-            /*int comboSelection = int.Parse(playersComboBox.SelectedItem.ToString());
-            if (comboSelection < SpaceRaceGame.MAX_PLAYERS)
-            {
-                for (int i = 1; i <= 6 - comboSelection; i++)
-                {
-                    int rowNum = 6 - i;
-                    string[] spoofRow = { };
-                }
-            }
-            else
-            {
-                for (int i = 0; i < SpaceRaceGame.MAX_PLAYERS; i++)
-                {
-                    playerDataGridView.Rows[i].Frozen = false;
-                }
-            }*/
-
             // Update GUI
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
             DetermineNumberOfPlayers();
             SpaceRaceGame.SetUpPlayers();
+            AdjustGridData();
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
         }
 
         private void gameResetButton_Click(object sender, EventArgs e)
         {
+            // Update player positions
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+            SpaceRaceGame.SetUpPlayers();
+            AdjustGridData();
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+            UpdatesPlayersDataGridView();
 
+            // Start game logic
+            firstRound = true;
+            ToggleEnabledObjects(GameStatus.StartGame);
+            yesRadioButton.Checked = false;
+            noRadioButton.Checked = false;
+        }
+
+        private void AdjustGridData()
+        {
+            Brush[] playerTokenColours = new Brush[SpaceRaceGame.MAX_PLAYERS] { Brushes.Yellow, Brushes.Red, Brushes.Orange, Brushes.White, Brushes.Green, Brushes.DarkViolet };
+            for (int i = SpaceRaceGame.NumberOfPlayers; i < SpaceRaceGame.NumberOfPlayers; i++)
+            {
+                Player pseudoPlayer = new Player(SpaceRaceGame.names[i]);
+                pseudoPlayer.PlayerTokenColour = playerTokenColours[i];
+
+                DataGridViewRow row = (DataGridViewRow)playerDataGridView.Rows[0].Clone();
+                row.Cells[0].Value = pseudoPlayer.PlayerTokenImage;
+                row.Cells[1].Value = pseudoPlayer.Name;
+                row.Cells[2].Value = 0;
+                row.Cells[3].Value = 60;
+
+                DataGridView dataTable = (DataGridView)playerDataGridView.DataSource;
+                dataTable.Rows.Add(row);
+
+                playerDataGridView.Update();
+            }
+        }
+
+        private void yesRadioButton_Click(object sender, EventArgs e)
+        {
+            singleStep = true;
+            rollDiceButton.Enabled = true;
+        }
+
+        private void noRadioButton_Click(object sender, EventArgs e)
+        {
+            singleStep = false;
+            rollDiceButton.Enabled = true;
         }
     }// end class
 }
