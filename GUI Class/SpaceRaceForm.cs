@@ -404,27 +404,6 @@ namespace GUI_Class
             noRadioButton.Checked = false;
         }
 
-        private void AdjustGridData()
-        {
-            Brush[] playerTokenColours = new Brush[SpaceRaceGame.MAX_PLAYERS] { Brushes.Yellow, Brushes.Red, Brushes.Orange, Brushes.White, Brushes.Green, Brushes.DarkViolet };
-            for (int i = SpaceRaceGame.NumberOfPlayers; i < SpaceRaceGame.NumberOfPlayers; i++)
-            {
-                Player pseudoPlayer = new Player(SpaceRaceGame.names[i]);
-                pseudoPlayer.PlayerTokenColour = playerTokenColours[i];
-
-                DataGridViewRow row = (DataGridViewRow)playerDataGridView.Rows[0].Clone();
-                row.Cells[0].Value = pseudoPlayer.PlayerTokenImage;
-                row.Cells[1].Value = pseudoPlayer.Name;
-                row.Cells[2].Value = 0;
-                row.Cells[3].Value = 60;
-
-                DataGridView dataTable = (DataGridView)playerDataGridView.DataSource;
-                dataTable.Rows.Add(row);
-
-                playerDataGridView.Update();
-            }
-        }
-
         private void yesRadioButton_Click(object sender, EventArgs e)
         {
             singleStep = true;
