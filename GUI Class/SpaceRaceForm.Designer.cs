@@ -152,7 +152,7 @@
             this.rollDiceButton.TabIndex = 7;
             this.rollDiceButton.Text = "Roll Dice";
             this.rollDiceButton.UseVisualStyleBackColor = true;
-            this.rollDiceButton.Click += new System.EventHandler(this.rollDiceButton_Click_1);
+            this.rollDiceButton.Click += new System.EventHandler(this.rollDiceButton_Click);
             // 
             // gameResetButton
             // 
@@ -163,6 +163,7 @@
             this.gameResetButton.TabIndex = 6;
             this.gameResetButton.Text = "Game Reset";
             this.gameResetButton.UseVisualStyleBackColor = true;
+            this.gameResetButton.Click += new System.EventHandler(this.gameResetButton_Click);
             // 
             // playerDataGridView
             // 
@@ -264,7 +265,6 @@
             this.label1.Size = new System.Drawing.Size(139, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Space Race";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // exitButton
             // 
