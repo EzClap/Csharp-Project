@@ -401,10 +401,10 @@ namespace GUI_Class
 
             // Start game logic
             firstRound = true;
-            ToggleEnabledObjects(GameStatus.StartGame);
-            playersComboBox.SelectedItem = "6";
             yesRadioButton.Checked = false;
             noRadioButton.Checked = false;
+            ToggleEnabledObjects(GameStatus.StartGame);
+            playersComboBox.SelectedItem = "6";
         }
 
         private void yesRadioButton_Click(object sender, EventArgs e)
@@ -417,6 +417,11 @@ namespace GUI_Class
         {
             singleStep = false;
             ToggleEnabledObjects(GameStatus.RadioSelection);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Spooky Popup Message!");
         }
     }// end class
 }
