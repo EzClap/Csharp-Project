@@ -278,18 +278,8 @@ namespace GUI_Class
             RefreshBoardTablePanelLayout();//must be the last line in this method. Do not put inside above loop.
         } //end UpdatePlayersGuiLocations
 
-        private void label1_Click(object sender, EventArgs e)
+        private void rollDiceButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void rollDiceButton_Click_1(object sender, EventArgs e)
-        {
-            // Start Round
-            //  disable reset button
-            //  disable exit button
-
-            // Round Calculations
             bool singleStep = true;
             if (singleStep)
             {
@@ -305,6 +295,28 @@ namespace GUI_Class
 
                 // End Round Toggles Objects
                 ToggleEnabledObjects(GameStatus.EndRound);
+
+                // Test Players
+                SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
+                bool gameOver = playersAtFinish | playersLostPower;
+                if (gameOver)
+                {
+                    // Toggle Objects
+                    ToggleEnabledObjects(GameStatus.EndGame);
+
+                    // Game Results
+                    string message = "";
+                    if (playersAtFinish)
+                    {
+                        for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
+                        { if (SpaceRaceGame.Players[i].AtFinish) { message += "\n\t" + SpaceRaceGame.Players[i].Name; } }
+                        MessageBox.Show("The following player(s) finished the game\n" + message);
+                    }
+                    else
+                    {
+                        MessageBox.Show("All players lost power!");
+                    }
+                }
             }
             
             else
@@ -353,7 +365,7 @@ namespace GUI_Class
         private void playersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // lock playerDataGridView
-            int comboSelection = int.Parse(playersComboBox.SelectedItem.ToString());
+            /*int comboSelection = int.Parse(playersComboBox.SelectedItem.ToString());
             if (comboSelection < SpaceRaceGame.MAX_PLAYERS)
             {
                 for (int i = 1; i <= 6 - comboSelection; i++)
@@ -368,13 +380,18 @@ namespace GUI_Class
                 {
                     playerDataGridView.Rows[i].Frozen = false;
                 }
-            }
+            }*/
 
             // Update GUI
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
             DetermineNumberOfPlayers();
             SpaceRaceGame.SetUpPlayers();
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+        }
+
+        private void gameResetButton_Click(object sender, EventArgs e)
+        {
+
         }
     }// end class
 }
