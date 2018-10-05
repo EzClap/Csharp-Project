@@ -131,6 +131,7 @@
             this.yesRadioButton.TabStop = true;
             this.yesRadioButton.Text = "Yes";
             this.yesRadioButton.UseVisualStyleBackColor = true;
+            this.yesRadioButton.Click += new System.EventHandler(this.yesRadioButton_Click);
             // 
             // noRadioButton
             // 
@@ -142,6 +143,7 @@
             this.noRadioButton.TabStop = true;
             this.noRadioButton.Text = "No";
             this.noRadioButton.UseVisualStyleBackColor = true;
+            this.noRadioButton.Click += new System.EventHandler(this.noRadioButton_Click);
             // 
             // rollDiceButton
             // 
