@@ -384,7 +384,6 @@ namespace GUI_Class
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
             DetermineNumberOfPlayers();
             SpaceRaceGame.SetUpPlayers();
-            AdjustGridData();
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
         }
 
@@ -393,7 +392,6 @@ namespace GUI_Class
             // Update player positions
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
             SpaceRaceGame.SetUpPlayers();
-            AdjustGridData();
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
             UpdatesPlayersDataGridView();
 
