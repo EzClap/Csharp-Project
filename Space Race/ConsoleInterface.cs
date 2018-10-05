@@ -135,18 +135,13 @@ namespace Space_Race
 
         private static bool PlayAgain()
         {
-            bool correctInput = false;
-            bool playAgain = false;
+            bool playAgain;
+            
+            Console.Write("\tPlay Again? (Y or N): ");
+            string input = Console.ReadLine();
 
-            Console.WriteLine("\n\n\n\n\n");
-            while (!correctInput)
-            {
-                Console.Write("\tPlay Again? (Y or N): ");
-                string input = Console.ReadLine();
-
-                if ("Y" == input || "y" == input) { playAgain = true; correctInput = true; }
-                else if ("N" == input || "n" == input) { playAgain = false; correctInput = true; }
-            }
+            if ("Y" == input || "y" == input) { playAgain = true;; }
+            else { playAgain = false; }
 
             if (!playAgain) { Console.WriteLine("\n\n\tThanks for playing Space Race.\n"); }
 
