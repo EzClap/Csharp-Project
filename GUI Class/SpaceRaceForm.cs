@@ -18,6 +18,7 @@ namespace GUI_Class
         // by removing them from their old square and adding them to their new square.
         // This enum makes it clear that we need to do both.
         enum TypeOfGuiUpdate { AddPlayer, RemovePlayer };
+        bool firstRound;
 
 
         public SpaceRaceForm()
@@ -148,7 +149,7 @@ namespace GUI_Class
         private void DetermineNumberOfPlayers()
         {
             // Store the SelectedItem property of the ComboBox in a string
-            string strNumPlayers = playersComboBox.SelectedItem.ToString();
+            string strNumPlayers = playersComboBox.Text;
 
             // Parse string to a number
             int numPlayers = int.Parse(strNumPlayers);
@@ -170,7 +171,8 @@ namespace GUI_Class
             // until you can play a game through to the finish square
             // and you want to implement the Reset button event handler.
             //
-
+            ToggleEnabledObjects(GameStatus.StartGame);
+            firstRound = true;
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
 
         }//end PrepareToPlay()
@@ -291,10 +293,18 @@ namespace GUI_Class
             bool singleStep = true;
             if (singleStep)
             {
+                // Start Round Toggled Objects
+                if (firstRound) { ToggleEnabledObjects(GameStatus.FirstRound); firstRound = false; }
+                ToggleEnabledObjects(GameStatus.StartRound);
+
+                // Commence Round
                 UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
                 SpaceRaceGame.PlayOneRound();
                 UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
                 UpdatesPlayersDataGridView();
+
+                // End Round Toggles Objects
+                ToggleEnabledObjects(GameStatus.EndRound);
             }
             
             else
@@ -305,9 +315,66 @@ namespace GUI_Class
             // End Round
         }
 
-        private void ToggleEnabledObjects(int option)
+        enum GameStatus { StartRound, EndRound, StartGame, EndGame, FirstRound };
+        private void ToggleEnabledObjects(GameStatus option)
         {
+            switch (option)
+            {
+                case GameStatus.StartRound: // need to disable reset, exit, rollDice
+                    gameResetButton.Enabled = false;
+                    exitButton.Enabled = false;
+                    rollDiceButton.Enabled = false;
+                    break;
 
+                case GameStatus.EndRound: // need to enable reset, exit, rollDice
+                    gameResetButton.Enabled = true;
+                    exitButton.Enabled = true;
+                    rollDiceButton.Enabled = true;
+                    break;
+
+                case GameStatus.StartGame: // need to disable reset button // need to enable playerDataGridView, rollDice, ComboBox
+                    gameResetButton.Enabled = false;
+                    playerDataGridView.Enabled = true;
+                    rollDiceButton.Enabled = true;
+                    playersComboBox.Enabled = true;
+                    break;
+
+                case GameStatus.EndGame: // need to disable rollDice
+                    rollDiceButton.Enabled = false;
+                    break;
+
+                case GameStatus.FirstRound: // need to disable playerDataGridView, ComboBox
+                    playerDataGridView.Enabled = false;
+                    playersComboBox.Enabled = false;
+                    break;
+            }
+        }
+
+        private void playersComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // lock playerDataGridView
+            int comboSelection = int.Parse(playersComboBox.SelectedItem.ToString());
+            if (comboSelection < SpaceRaceGame.MAX_PLAYERS)
+            {
+                for (int i = 1; i <= 6 - comboSelection; i++)
+                {
+                    int rowNum = 6 - i;
+                    string[] spoofRow = { };
+                }
+            }
+            else
+            {
+                for (int i = 0; i < SpaceRaceGame.MAX_PLAYERS; i++)
+                {
+                    playerDataGridView.Rows[i].Frozen = false;
+                }
+            }
+
+            // Update GUI
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+            DetermineNumberOfPlayers();
+            SpaceRaceGame.SetUpPlayers();
+            UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
         }
     }// end class
 }
