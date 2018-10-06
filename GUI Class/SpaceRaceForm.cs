@@ -340,7 +340,7 @@ namespace GUI_Class
                 if (SpaceRaceGame.Players[i].AtFinish)
                 {
                     playersatfinish = true;
-                    msg += SpaceRaceGame.names[i]+"\n\t";
+                    msg += SpaceRaceGame.Players[i].Name +"\n\t";
                 }
             }
             if (playersatfinish)
