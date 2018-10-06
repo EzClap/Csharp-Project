@@ -102,7 +102,7 @@ namespace Space_Race
                     string name = SpaceRaceGame.names[i];
                     string square = "square " + SpaceRaceGame.Players[i].Location.Name;
                     int fuel = SpaceRaceGame.Players[i].RocketFuel;
-                    Console.WriteLine("\t{0} on {1} with {2} yottawatt of power remaining", name, square, fuel);
+                    Console.WriteLine("\t{0} on {1} with {2} yottawatt of power remaining", name, fuel, square);
                 }
                 
                 round++;
@@ -126,7 +126,7 @@ namespace Space_Race
                 string name = SpaceRaceGame.names[i];
                 string square = "square " + SpaceRaceGame.Players[i].Location.Number;
                 int fuel = SpaceRaceGame.Players[i].RocketFuel;
-                Console.WriteLine("\n\t\t{0} with {1} yottawatt of power at {2}", name, square, fuel);
+                Console.WriteLine("\n\t\t{0} with {1} yottawatt of power at {2}", name, fuel, square);
             }
 
             Console.Write("\n\tPress Enter to continue...");
