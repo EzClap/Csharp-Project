@@ -19,7 +19,7 @@ namespace Object_Classes {
         private static string defaultPath = Environment.CurrentDirectory;
         private static string rollFileName = defaultPath + "\\testrolls.txt";
         private static StreamReader rollFile = new StreamReader(rollFileName);
-        private static bool DEBUG = true;
+        private static bool DEBUG = false;
 
         // number of sides on the die
         private int numOfFaces;
