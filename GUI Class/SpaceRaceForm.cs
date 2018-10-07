@@ -309,7 +309,7 @@ namespace GUI_Class
                 }
                 
                 // Play for currentPlayer
-                if (currentPlayer <= SpaceRaceGame.NumberOfPlayers)
+                if (currentPlayer < SpaceRaceGame.NumberOfPlayers)
                 {
                     UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
                     SpaceRaceGame.Players[currentPlayer].Play(die1, die2);
@@ -319,14 +319,14 @@ namespace GUI_Class
 
                 // Update currentPlayer
                 currentPlayer++;
-                currentPlayer %= 6;
+                currentPlayer %= SpaceRaceGame.NumberOfPlayers;
 
                 // Test Game Over
                 TestGameOver();
             }
         }
 
-        private void TestGameOver()
+        private bool TestGameOver()
         {
             SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
             bool gameOver = playersAtFinish | playersLostPower;
@@ -349,6 +349,8 @@ namespace GUI_Class
                     MessageBox.Show("All players lost power!");
                 }
             }
+
+            return gameOver;
         }
 
         enum GameStatus { StartGame, EndGame, FirstRound, RadioSelection };
@@ -422,6 +424,23 @@ namespace GUI_Class
         private void label1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Spooky Popup Message!");
+            bool gameOver = false;
+            while (!gameOver)
+            {
+                UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
+                SpaceRaceGame.PlayOneRound();
+                UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
+                UpdatesPlayersDataGridView();
+
+                gameOver = TestGameOver();
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            yesRadioButton.Checked = false;
+            noRadioButton.Checked = false;
+            ToggleEnabledObjects(GameStatus.StartGame);
         }
     }// end class
 }
