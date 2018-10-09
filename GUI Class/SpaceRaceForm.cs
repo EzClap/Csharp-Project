@@ -285,8 +285,9 @@ namespace GUI_Class
         {
             if (!singleStep)
             {
-                // First Round Toggled Objects
+                // Round Toggled Objects
                 if (firstRound) { ToggleEnabledObjects(GameStatus.FirstRound); firstRound = false; }
+                ToggleEnabledObjects(GameStatus.StartRound);
 
                 // Commence Round
                 UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
@@ -294,19 +295,25 @@ namespace GUI_Class
                 UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
                 UpdatesPlayersDataGridView();
 
+                // Round Toggled Objects
+                ToggleEnabledObjects(GameStatus.EndRound);
+                
                 // Test Players
                 TestGameOver();
             }
             
             else
             {
-                // First Round Logic
+                // First Round
                 if (firstRound)
                 {
                     ToggleEnabledObjects(GameStatus.FirstRound);
                     currentPlayer = 0;
                     firstRound = false;
                 }
+
+                // Toggle Objects if Round Start
+                if (currentPlayer == 0) { ToggleEnabledObjects(GameStatus.StartRound); }
                 
                 // Play for currentPlayer
                 if (currentPlayer < SpaceRaceGame.NumberOfPlayers)
@@ -316,6 +323,9 @@ namespace GUI_Class
                     UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
                     UpdatesPlayersDataGridView();
                 }
+
+                // Toggle Objects if Round Ended
+                if (currentPlayer == SpaceRaceGame.NumberOfPlayers - 1) { ToggleEnabledObjects(GameStatus.EndRound); }
 
                 // Update currentPlayer
                 currentPlayer++;
@@ -353,7 +363,7 @@ namespace GUI_Class
             return gameOver;
         }
 
-        enum GameStatus { StartGame, EndGame, FirstRound, RadioSelection };
+        enum GameStatus { StartGame, EndGame, FirstRound, StartRound, EndRound, RadioSelection };
         private void ToggleEnabledObjects(GameStatus option)
         {
             switch (option)
@@ -375,6 +385,16 @@ namespace GUI_Class
                 case GameStatus.FirstRound:
                     playerDataGridView.Enabled = false;
                     playersComboBox.Enabled = false;
+                    break;
+
+                case GameStatus.StartRound:
+                    gameResetButton.Enabled = false;
+                    exitButton.Enabled = false;
+                    break;
+
+                case GameStatus.EndRound:
+                    gameResetButton.Enabled = true;
+                    exitButton.Enabled = true;
                     break;
 
                 case GameStatus.RadioSelection:
