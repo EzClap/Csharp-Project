@@ -1,5 +1,4 @@
 ﻿using System;
-//DO NOT DELETE the two following using statements *********************************
 using Game_Logic_Class;
 using Object_Classes;
 
@@ -56,7 +55,7 @@ namespace Space_Race
         } // end PressAny
 
         /// <summary>
-        /// Asks user for # players and assigns to SpaceRaceGame
+        /// Asks user for # players and assigns to SpaceRaceGame.
         /// </summary>
         private static void DeterminePlayers()
         {
@@ -79,6 +78,9 @@ namespace Space_Race
             SpaceRaceGame.SetUpPlayers();
         }
 
+        /// <summary>
+        /// Runs the game. Calculates player movement, checks game over and outputs all players' positions and fuel.
+        /// </summary>
         private static void RunGame()
         {
             bool gameFinished = false;
@@ -86,17 +88,21 @@ namespace Space_Race
 
             while (!gameFinished)
             {
+                // Start the round.
                 Console.Write("\nPress Enter to play a round ...");
                 Console.ReadLine();
 
                 if (round == 1) { Console.WriteLine("\n\tFirst Round\n"); }
                 else { Console.WriteLine("\n\tNext Round\n"); }
 
+                // Game calculations.
                 SpaceRaceGame.PlayOneRound();
 
+                // Check if game is over.
                 SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
                 if (playersAtFinish || playersLostPower) { gameFinished = true; }
 
+                // Outputs all player positions and fuel
                 for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
                 {
                     string name = SpaceRaceGame.names[i];
@@ -109,8 +115,12 @@ namespace Space_Race
             }
         }
 
+        /// <summary>
+        /// Checks type of game finished. Outputs winning players as well as all players' positions and fuel.
+        /// </summary>
         private static void FinishGame()
         {
+            // Output game results.
             SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
             if (playersAtFinish) { Console.WriteLine("\n\tThe following player(s) finished the game"); }
             else { Console.WriteLine("\n\tAll players lost power!"); }
@@ -120,6 +130,7 @@ namespace Space_Race
                 if (SpaceRaceGame.Players[i].AtFinish) { Console.WriteLine("\n\t\t" + SpaceRaceGame.names[i]); }
             }
 
+            // Output all player positions.
             Console.WriteLine("\n\tIndividual players finished with the at the locations specified.");
             for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
             {
@@ -133,18 +144,22 @@ namespace Space_Race
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Asks the user if they would like to play again. Y or y returns true.
+        /// Everything else returns false.
+        /// </summary>
+        /// <returns></returns>
         private static bool PlayAgain()
         {
             bool playAgain;
             
             Console.Write("\tPlay Again? (Y or N): ");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToUpper();
 
-            if ("Y" == input || "y" == input) { playAgain = true;; }
+            if ("Y" == input) { playAgain = true;; }
             else { playAgain = false; }
 
             if (!playAgain) { Console.WriteLine("\n\n\tThanks for playing Space Race.\n"); }
-
             return playAgain;
         }
     }//end Console class

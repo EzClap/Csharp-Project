@@ -1,9 +1,7 @@
 ﻿using System;
-//  Un.comment  this using statement after you have remove the large Block Comment below 
 using System.Drawing;
 using System.Windows.Forms;
 using Game_Logic_Class;
-//  Un.comment  this using statement when you declare any object from Object Classes, eg Board,Square etc.
 using Object_Classes;
 
 namespace GUI_Class
@@ -18,8 +16,18 @@ namespace GUI_Class
         // by removing them from their old square and adding them to their new square.
         // This enum makes it clear that we need to do both.
         enum TypeOfGuiUpdate { AddPlayer, RemovePlayer };
-        bool firstRound;
 
+        // Enum used for a switch in ToggleEnabledObjects.
+        enum GameStatus { StartGame, EndGame, FirstRound, StartRound, EndRound, RadioSelection };
+
+        // Dice for single step.
+        private static Die die1 = new Die(), die2 = new Die();
+
+        // Declaring variables used between functions.
+        bool firstRound;
+        bool singleStep;
+        int currentPlayer;
+        
 
         public SpaceRaceForm()
         {
@@ -44,16 +52,6 @@ namespace GUI_Class
         {
             Environment.Exit(0);
         }
-
-
-
-        //  ******************* Un.comment - Remove Block Comment below
-        //                         once you've added the TableLayoutPanel to your form.
-        //
-        //       You will have to replace "tableLayoutPanel" by whatever (Name) you used.
-        //
-        //        Likewise with "playerDataGridView" by your DataGridView (Name)
-        //  ******************************************************************************************
 
 
         /// <summary>
@@ -91,14 +89,15 @@ namespace GUI_Class
                 Square square = Board.Squares[squareNum];
                 SquareControl squareControl = new SquareControl(square, SpaceRaceGame.Players);
                 AddControlToTableLayoutPanel(squareControl, squareNum);
-            }//endfor
-
+            }// end for
         }// end SetupGameBoard
+
 
         private void AddControlToTableLayoutPanel(Control control, int squareNum)
         {
             int screenRow = 0;
             int screenCol = 0;
+
             MapSquareNumToScreenRowAndColumn(squareNum, out screenRow, out screenCol);
             tableLayoutPanel.Controls.Add(control, screenCol, screenRow);
         }// end Add Control
@@ -115,26 +114,19 @@ namespace GUI_Class
         /// <param name="columnNumber">The output column number.</param>
         private static void MapSquareNumToScreenRowAndColumn(int squareNum, out int screenRow, out int screenCol)
         {
-            // Code needs to be added here to do the mapping
             screenRow = 6 - squareNum / 8;
             if (screenRow % 2 == 1) { screenCol = 7 - squareNum % 8; }
             else { screenCol = squareNum % 8; }
-
-            // Makes the compiler happy - these two lines below need to deleted 
-            //    once mapping code is written above
-            //screenRow = 0;
-            //screenCol = 0;
-
         }//end MapSquareNumToScreenRowAndColumn
-
+        
 
         private void SetupPlayersDataGridView()
         {
             // Stop the playersDataGridView from using all Player columns.
             playerDataGridView.AutoGenerateColumns = false;
+
             // Tell the playersDataGridView what its real source of data is.
             playerDataGridView.DataSource = SpaceRaceGame.Players;
-
         }// end SetUpPlayersDataGridView
 
 
@@ -164,15 +156,13 @@ namespace GUI_Class
         /// </summary>
         private void PrepareToPlay()
         {
-            // More code will be needed here to deal with restarting 
-            // a game after the Reset button has been clicked. 
-            //
-            // Leave this method with the single statement 
-            // until you can play a game through to the finish square
-            // and you want to implement the Reset button event handler.
-            //
+            // Toggle objects for starting the game.
             ToggleEnabledObjects(GameStatus.StartGame);
+
+            // Set first round.
             firstRound = true;
+
+            // Update players' gui.
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
 
         }//end PrepareToPlay()
@@ -191,9 +181,6 @@ namespace GUI_Class
             int screenRow;
             int screenCol;
 
-            // Un.comment the following lines once you've added the tableLayoutPanel to your form. 
-            //     and delete the "return null;" 
-            //
             MapSquareNumToScreenRowAndColumn(squareNum, out screenRow, out screenCol);
             return (SquareControl)tableLayoutPanel.GetControlFromPosition(screenCol, screenRow);
         }
@@ -208,10 +195,7 @@ namespace GUI_Class
         /// <returns>Returns the square number of the player.</returns>
         private int GetSquareNumberOfPlayer(int playerNumber)
         {
-            // Code needs to be added here.
             int playerLocation = SpaceRaceGame.Players[playerNumber].Location.Number;
-
-            //     delete the "return -1;" once body of method has been written 
             return playerLocation;
         }//end GetSquareNumberOfPlayer
 
@@ -231,6 +215,7 @@ namespace GUI_Class
             tableLayoutPanel.Invalidate(true);
         }
 
+
         /// <summary>
         /// When the Player objects are updated (location, etc),
         /// the players DataGridView is not updated immediately.  
@@ -244,6 +229,7 @@ namespace GUI_Class
         {
             SpaceRaceGame.Players.ResetBindings();
         }
+
 
         /// <summary>
         /// At several places in the program's code, it is necessary to update the GUI board,
@@ -261,13 +247,6 @@ namespace GUI_Class
         /// </summary>
         private void UpdatePlayersGuiLocations(TypeOfGuiUpdate typeOfGuiUpdate)
         {
-            // Code needs to be added here which does the following:
-            //
-            //   for each player
-            //       determine the square number of the player
-            //       retrieve the SquareControl object with that square number
-            //       using the typeOfGuiUpdate, update the appropriate element of 
-            //          the ContainsPlayers array of the SquareControl object.
             for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
             {
                 SquareControl square = SquareControlAt(SpaceRaceGame.Players[i].Location.Number);
@@ -275,14 +254,19 @@ namespace GUI_Class
                 else { square.ContainsPlayers[i] = false; }
             }
 
-            RefreshBoardTablePanelLayout();//must be the last line in this method. Do not put inside above loop.
+            RefreshBoardTablePanelLayout();
+
         } //end UpdatePlayersGuiLocations
         
-        bool singleStep;
-        int currentPlayer;
-        private static Die die1 = new Die(), die2 = new Die();
+        
+        /// <summary>
+        /// Plays the game on click. Including rolling dice, moving players tokens and testing if the game has finished.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
+            // Not single step mode
             if (!singleStep)
             {
                 // Round Toggled Objects
@@ -302,6 +286,7 @@ namespace GUI_Class
                 TestGameOver();
             }
             
+            // Single step mode
             else
             {
                 // First Round
@@ -336,6 +321,10 @@ namespace GUI_Class
             }
         }
 
+        /// <summary>
+        /// Tests if the game is finished and displays a message if true.
+        /// </summary>
+        /// <returns></returns>
         private bool TestGameOver()
         {
             SpaceRaceGame.TestPlayers(out bool playersAtFinish, out bool playersLostPower);
@@ -363,7 +352,10 @@ namespace GUI_Class
             return gameOver;
         }
 
-        enum GameStatus { StartGame, EndGame, FirstRound, StartRound, EndRound, RadioSelection };
+        /// <summary>
+        /// Function to toggle form objects depending on game events.
+        /// </summary>
+        /// <param name="option"></param>
         private void ToggleEnabledObjects(GameStatus option)
         {
             switch (option)
@@ -404,6 +396,11 @@ namespace GUI_Class
             }
         }
 
+        /// <summary>
+        /// Function to update # players when combo box is changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void playersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Update GUI
@@ -413,6 +410,11 @@ namespace GUI_Class
             UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
         }
 
+        /// <summary>
+        /// Button to reset the game to starting conditions.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gameResetButton_Click(object sender, EventArgs e)
         {
             // Update player positions
@@ -429,38 +431,51 @@ namespace GUI_Class
             playersComboBox.SelectedItem = "6";
         }
 
+
+        // Yes Radio Button
         private void yesRadioButton_Click(object sender, EventArgs e)
         {
             singleStep = true;
             ToggleEnabledObjects(GameStatus.RadioSelection);
         }
 
+        // No Radio Button
         private void noRadioButton_Click(object sender, EventArgs e)
         {
             singleStep = false;
             ToggleEnabledObjects(GameStatus.RadioSelection);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Plays game from start to finish after showing a spooky popup message.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void titleLabel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Spooky Popup Message!");
+            groupBox1.Enabled = false;
+
             bool gameOver = false;
             while (!gameOver)
             {
+                // Begin Round ToggleObjects
+                if (firstRound) { ToggleEnabledObjects(GameStatus.FirstRound); }
+                firstRound = false;
+                ToggleEnabledObjects(GameStatus.StartRound);
+
+                // Play game
                 UpdatePlayersGuiLocations(TypeOfGuiUpdate.RemovePlayer);
                 SpaceRaceGame.PlayOneRound();
                 UpdatePlayersGuiLocations(TypeOfGuiUpdate.AddPlayer);
                 UpdatesPlayersDataGridView();
 
+                // End Round ToggleObjects
+                ToggleEnabledObjects(GameStatus.EndRound);
+
+                // Test Game Over
                 gameOver = TestGameOver();
             }
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            yesRadioButton.Checked = false;
-            noRadioButton.Checked = false;
-            ToggleEnabledObjects(GameStatus.StartGame);
         }
     }// end class
 }

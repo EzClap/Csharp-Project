@@ -60,8 +60,7 @@ namespace Game_Logic_Class
         {
             // Clear (if any) previous list
             players.Clear();
-
-
+            
             // Assign player values
             for (int i = 0; i < numberOfPlayers; i++)
             {

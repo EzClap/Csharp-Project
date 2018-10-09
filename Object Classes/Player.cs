@@ -26,16 +26,8 @@ namespace Object_Classes {
             get {
                 return position;
             }
-            //set the limit so that position wont get out of bound(modified)
             set {
-                if (value > Board.FINISH_SQUARE_NUMBER)
-                {
-                    position = Board.FINISH_SQUARE_NUMBER;
-                }
-                else
-                {
-                    position = value;
-                }
+                position = value;
             }
         }
 
@@ -145,19 +137,19 @@ namespace Object_Classes {
         public void Play(Die d1, Die d2) {
             if (this.hasPower && !atFinish)
             {
-                // Roll Dice and advance # squares
+                // Roll Dice and advance # squares.
                 int forwardNum = d1.Roll() + d2.Roll();
-                position += forwardNum;
+                position = Math.Min(position + forwardNum, Board.FINISH_SQUARE_NUMBER);
                 location = Board.Squares[position];
 
-                //this updates the location and position and fuel
+                // This updates the location and position and fuel.
                 location.LandOn(this);
                 if (Board.Squares[position].NextSquare() == null)
                 {
                     location = Board.Squares[position];
                 }
 
-                // Check if player has reached the final square
+                // Check if player has reached the final square.
                 ReachedFinalSquare();
             }
         } // end Play.
@@ -187,10 +179,14 @@ namespace Object_Classes {
         /// <returns>true if reached the Final Square</returns>
         private bool ReachedFinalSquare() {
             if (position == Board.FINISH_SQUARE_NUMBER)
-            { atFinish = true; }
+            {
+                atFinish = true;
+            }
 
             else
-            { atFinish = false; }
+            {
+                atFinish = false;
+            }
 
             return atFinish;
         } //end ReachedFinalSquare
