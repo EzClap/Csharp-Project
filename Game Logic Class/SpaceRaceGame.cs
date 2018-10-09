@@ -20,6 +20,7 @@ namespace Game_Logic_Class
             }
             set
             {
+                numberOfPlayers = value;
             }
         }
 
@@ -57,12 +58,11 @@ namespace Game_Logic_Class
         /// </summary>
         public static void SetUpPlayers() 
         {
-            // for number of players
-            //      create a new player object
-            //      initialize player's instance variables for start of a game
-            //      add player to the binding list
+            // Clear (if any) previous list
             players.Clear();
 
+
+            // Assign player values
             for (int i = 0; i < numberOfPlayers; i++)
             {
                 players.Add(new Player(names[i]));
@@ -73,15 +73,19 @@ namespace Game_Logic_Class
                 players[i].PlayerTokenColour = playerTokenColours[i];
 
                 // debug
-                //players[i].RocketFuel = 2;
-                //players[i].Position = Board.Squares[Board.FINISH_SQUARE_NUMBER - 1].Number; players[i].Location = Board.Squares[Board.FINISH_SQUARE_NUMBER - 1];
+                bool debug = false;
+                if (debug)
+                {
+                    players[i].RocketFuel = 2;
+                    players[i].Position = Board.Squares[Board.FINISH_SQUARE_NUMBER - 1].Number; players[i].Location = Board.Squares[Board.FINISH_SQUARE_NUMBER - 1];
+                }
             }
         }
 
         /// <summary>
         ///  Plays one round of a game
         /// </summary>
-            public static void PlayOneRound() 
+        public static void PlayOneRound() 
         {
             for (int i = 0; i < players.Count; i++)
             {
@@ -89,6 +93,12 @@ namespace Game_Logic_Class
             }
         }
 
+        /// <summary>
+        /// Tests for whether the game is over. Returns true/false whether players are at the finish square as well
+        /// as whether all players have lost power. (the two conditions that can cause the game to be over)
+        /// </summary>
+        /// <param name="playersAtFinish"></param>
+        /// <param name="playersLostPower"></param>
         public static void TestPlayers(out bool playersAtFinish, out bool playersLostPower)
         {
             playersAtFinish = false;
