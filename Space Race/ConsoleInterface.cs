@@ -147,21 +147,5 @@ namespace Space_Race
 
             return playAgain;
         }
-
-        //private static void TestPlayers(out bool playersAtFinish, out bool playersLostPower)
-        //{
-        //    playersAtFinish = false;
-        //    playersLostPower = false;
-        //    int playersHasPower = 0;
-
-        //    for (int i = 0; i < SpaceRaceGame.NumberOfPlayers; i++)
-        //    {
-        //        if (SpaceRaceGame.Players[i].AtFinish) { playersAtFinish = true; }
-        //        if (!SpaceRaceGame.Players[i].HasPower) { playersHasPower++; }
-        //    }
-
-        //    if (playersHasPower == SpaceRaceGame.NumberOfPlayers) { playersLostPower = true; }
-        //}
-
     }//end Console class
 }
