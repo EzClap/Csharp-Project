@@ -20,19 +20,6 @@ namespace Game_Logic_Class
             }
             set
             {
-                //Changed to limit the number of players(modified)
-                if (value < MIN_PLAYERS)
-                {
-                    numberOfPlayers = MIN_PLAYERS;
-                }
-                else if (value > MAX_PLAYERS)
-                {
-                    numberOfPlayers = MAX_PLAYERS;
-                }
-                else
-                {
-                    numberOfPlayers = value;
-                }
             }
         }
 
