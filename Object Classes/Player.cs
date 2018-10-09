@@ -125,7 +125,7 @@ namespace Object_Classes {
         /// Post: player object has name
         /// </summary>
         /// <param name="name">Name for this player</param>
-        public Player(String name)//, Square initialLocation)
+        public Player(String name)
         {
             Name = name;
         } // end Player constructor
@@ -143,13 +143,11 @@ namespace Object_Classes {
         /// <param name="d1">first die</param>
         /// <param name="d2">second die</param>
         public void Play(Die d1, Die d2) {
-            //  CODE NEEDS TO BE ADDED HERE
             if (this.hasPower && !atFinish)
             {
-                d1.Reset();
-                d2.Reset();
+                // Roll Dice and advance # squares
                 int forwardNum = d1.Roll() + d2.Roll();
-                Position += forwardNum;
+                position += forwardNum;
                 location = Board.Squares[position];
 
                 //this updates the location and position and fuel
@@ -159,6 +157,7 @@ namespace Object_Classes {
                     location = Board.Squares[position];
                 }
 
+                // Check if player has reached the final square
                 ReachedFinalSquare();
             }
         } // end Play.
@@ -187,22 +186,13 @@ namespace Object_Classes {
         /// </summary>
         /// <returns>true if reached the Final Square</returns>
         private bool ReachedFinalSquare() {
-
-            //  CODE NEEDS TO BE ADDED HERE
             if (position == Board.FINISH_SQUARE_NUMBER)
-            {
-                atFinish = true;
-            }
+            { atFinish = true; }
 
             else
-            {
-                atFinish = false;
-            }
+            { atFinish = false; }
 
-            return atFinish; // so the class can compile without error. (Consult tutor see if 
-                                                                  //we can change the template code
-                                                                  //was return false;)
-            
+            return atFinish;
         } //end ReachedFinalSquare
 
 
